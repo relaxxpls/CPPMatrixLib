@@ -1,6 +1,5 @@
 #ifndef _MATRIX_H_
 #define _MATRIX_H_
-
 #include <vector>
 #include <utility>
 #include <iostream>
@@ -9,6 +8,8 @@
 #include <iterator>
 #include <cmath>
 #include <climits>
+
+namespace CPPMatrixLib {
 
 /**
  *  Operations:
@@ -291,4 +292,5 @@ std::vector<T> range(matrix<T> m, int axis = 1) {
     return res;
 }
 
+};
 #endif
