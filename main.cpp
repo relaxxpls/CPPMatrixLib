@@ -28,7 +28,10 @@ int main() {
     std::cout << norm(D, "L1") << std::endl;
 
     // Print the range of values (max - min) stored in either column (1) or row (2)
-    std::cout << range(D, 2) << std::endl;
+    // std::cout << range(D, 2) << std::endl;
+
+    // Python like range functioning
+    std::cout << range<int>(0, -10, -1) << range<int>(0, 10, 3) << std::endl;
 
     // Matrix rows
     matrix<double> c1 = D.column(4);

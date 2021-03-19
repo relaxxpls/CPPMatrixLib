@@ -107,36 +107,58 @@ double norm(matrix<T> m, std::string NORM = "LF") {
 // MaxVal - MinVal over axis
 // axis 1: range of each column
 // axis 2: range of each row
+// template<typename T>
+// matrix<T> range(matrix<T> m, int axis = 1) {
+//     assert(axis == 1 || axis == 2);
+//     size_t R = m.size().first, C = m.size().second;
+//     if (axis == 1) {
+//         matrix<T> res(1, C);
+//         for (size_t c = 0; c < C; c++) {
+//             T mnVal = std::numeric_limits<T>::max();
+//             T mxVal = std::numeric_limits<T>::lowest();
+//             for (size_t r = 0; r < R; r++) {
+//                 mnVal = std::min(mnVal, m(r, c));
+//                 mxVal = std::max(mxVal, m(r, c));
+//             }
+//             res(0, c) = mxVal - mnVal;
+//         }
+//         return res;
+//     }
+//     else {
+//         matrix<T> res(R, 1);
+//         for (size_t r = 0; r < R; r++) {
+//             T mnVal = std::numeric_limits<T>::max();
+//             T mxVal = std::numeric_limits<T>::lowest();
+//             for (size_t c = 0; c < C; c++) {
+//                 mnVal = std::min(mnVal, m(r, c));
+//                 mxVal = std::max(mxVal, m(r, c));
+//             }
+//             res(r, 0) = mxVal - mnVal;
+//         }
+//         return res;
+//     }
+// }
+
+
+// uniform range (similar working to python)
 template<typename T>
-matrix<T> range(matrix<T> m, int axis = 1) {
-    assert(axis == 1 || axis == 2);
-    size_t R = m.size().first, C = m.size().second;
-    if (axis == 1) {
-        matrix<T> res(1, C);
-        for (size_t c = 0; c < C; c++) {
-            T mnVal = std::numeric_limits<T>::max();
-            T mxVal = std::numeric_limits<T>::lowest();
-            for (size_t r = 0; r < R; r++) {
-                mnVal = std::min(mnVal, m(r, c));
-                mxVal = std::max(mxVal, m(r, c));
-            }
-            res(0, c) = mxVal - mnVal;
-        }
-        return res;
+matrix<T> range(T start, T stop, T step = 1) {
+    if (step == 0) {
+    	return matrix<T>(1, 0);
     }
-    else {
-        matrix<T> res(R, 1);
-        for (size_t r = 0; r < R; r++) {
-            T mnVal = std::numeric_limits<T>::max();
-            T mxVal = std::numeric_limits<T>::lowest();
-            for (size_t c = 0; c < C; c++) {
-                mnVal = std::min(mnVal, m(r, c));
-                mxVal = std::max(mxVal, m(r, c));
-            }
-            res(r, 0) = mxVal - mnVal;
-        }
-        return res;
+    int n = ceil(1.0 * (stop - start) / step);
+    assert(n >= 0);
+    matrix<T> res(1, n);
+    for (size_t i = 0; i < n; i++) {
+    	res(0, i) = start + i * step;
     }
+    return res;
+}
+
+
+template<typename T>
+matrix<T> range(T stop) {
+	return range<T>(0, stop, 1);
 }
 
 
