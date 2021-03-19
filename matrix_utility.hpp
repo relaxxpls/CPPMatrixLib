@@ -180,40 +180,41 @@ matrix<T> rescale(const matrix<T> &m, T factor=0) {
 }
 
 // Householder Method for QR decomposition
-// template<typename T>
-// std::tuple<matrix<T>, matrix<T>> qr_householder(matrix<T> m) {
-//     size_t R = m.size().first, C = m.size().second;
-//     // Final Q, R vertices
-//     matrix<T> mQ(R, C, 0), mR(C, C, 0);
-//     // Array of identity matrices
-//     std::vector<matrix<T>> qv(R, eye<T>(R));
-//     matrix<T> z(m), z1;
+template<typename T>
+std::tuple<matrix<T>, matrix<T>> qr_householder(matrix<T> m) {
+    size_t R = m.size().first, C = m.size().second;
+    // Final Q, R vertices
+    matrix<T> mQ(R, C, 0), mR(C, C, 0);
+    // Array of identity matrices
+    std::vector<matrix<T>> qv(R, eye<T>(R));
+    matrix<T> z(m), z1;
 
-//     for (size_t k = 0; k < C && k < R - 1; k++) {
-//         matrix<T> e(R, 1);
-//         z1 = z.compute_minor(k);
-//         matrix<T> x = z1.column(k);
+    for (size_t k = 0; k < C && k < R - 1; k++) {
+        matrix<T> e(R, 1);
+        z1 = z.compute_minor(k);
+        matrix<T> x = z1.column(k);
 
-//         T a = norm(x);
-//         if (m(k, k) > 0) a *= -1;
+        T a = norm(x);
+        if (m(k, k) > 0) a *= -1;
 
-//         for (size_t r = 0; r < R; r++)
-//             e(r, 0) = (r == k);
-//         e = rescale(x + a*e);
+        for (size_t r = 0; r < R; r++)
+            e(r, 0) = (r == k);
+        e = rescale(x + a*e);
 
-//         qv[k] -= 2 * e * e.t();
-//         z = qv[k] * z1;
-//     }
-//     mQ = qv[0];
-//     for (size_t i = 1; i < C && i < R - 1; i++) {
-//         z1 = qv[i] * mQ;
-//         mQ = z1;
-//     }
+        qv[k] -= 2 * e * e.t();
+        z = qv[k] * z1;
+    }
 
-//     mR = mQ * m;
-//     mQ = mQ.t();
-//     return std::make_tuple(mQ, mR);
-// }
+    mQ = qv[0];
+    for (size_t i = 1; i < C && i < R - 1; i++) {
+        z1 = qv[i] * mQ;
+        mQ = z1;
+    }
+
+    mR = mQ * m;
+    mQ = mQ.t();
+    return std::make_tuple(mQ, mR);
+}
 
 // QR decomposition
 template<typename T>
