@@ -1,5 +1,6 @@
 #include "matrix.hpp"
 #include "matrix_utility.hpp"
+#include "my_LU.cpp"
 
 int main() {
     // Initialisation of a 3*3 matrix with base value 2
@@ -59,4 +60,43 @@ int main() {
     else {
         std::cout << "QR Decomposition Failed :(" << std::endl;
     }
+
+    //To Show that LU Decomposition works (Predefined Matrix D as example)
+
+    matrix<double> test={{1,2,4},
+                         {3,8,14},
+                         {2,6,13}};
+
+    matrix<double> test2={{1,2},
+                          {3,8}};
+    
+    matrix<double> test3={{2,4,1,3},
+                          {2,5,4,7},
+                          {4,9,6,13},
+                          {6,13,8,21}};
+
+    std::pair<matrix<double>,matrix<double> > ans;
+
+    std::cout<<"Test 1: "<<"\n";
+    ans=mylu(test);
+
+    std::cout<<test<<"\n";
+    std::cout<<ans.first<<"\n";
+    std::cout<<ans.second<<"\n";
+
+    std::cout<<"Test 2: "<<"\n";
+    ans=mylu(test2);
+
+    std::cout<<test2<<"\n";
+    std::cout<<ans.first<<"\n";
+    std::cout<<ans.second<<"\n";
+
+    std::cout<<"Test #: "<<"\n";
+    ans=mylu(test3);
+
+    std::cout<<test3<<"\n";
+    std::cout<<ans.first<<"\n";
+    std::cout<<ans.second<<"\n";
+
+
 }
