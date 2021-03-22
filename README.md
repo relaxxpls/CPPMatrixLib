@@ -1,10 +1,10 @@
 # CPPMatrixLib - A Portable Matrix Library in C++
-This is a simple matrix library, that is built to have a similar interface for matrices as compared to MATLAB or NumPy.
+This is a simple matrix library, that is built to have a similar interface for matrices as compared to MATLAB or NumPy. Built as a project for [WnCC SoC '21](https://wncc-iitb.org/soc_projects/118-laxman-matrix.html)
 
-### Proficiency Test: (Deadline: 23rd March 5PM)
+### Proficiency Test: (Deadline: 23rd March 5pm)
 1.  Fork & clone [CPPMatrixLib](https://github.com/relaxxpls/CPPMatrixLib)
-2.  Go through [main.cpp](https://github.com/relaxxpls/CPPMatrixLib/blob/main/main.cpp), and try to understand how the interface.
-2.  Add a file called as `my_lu.cpp`.
+2.  Go through [main.cpp](https://github.com/relaxxpls/CPPMatrixLib/blob/main/main.cpp), and try to understand how the interface
+2.  Add a file called as `my_lu.cpp`  
 3.  Inside your `my_lu.cpp` file, code a simple [LU Decomposition](https://www.geeksforgeeks.org/l-u-decomposition-system-linear-equations/), using the [matrix](https://github.com/relaxxpls/CPPMatrixLib/blob/main/matrix.hpp) and [matrix_utility](https://github.com/relaxxpls/CPPMatrixLib/blob/main/matrix_utility.hpp) headers. You can use the pseudocode provided below for reference:
 ```
 function mylu (matrix A) -> returns L and U
