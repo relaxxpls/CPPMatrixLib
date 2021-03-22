@@ -39,5 +39,4 @@ end
 MATLAB references: [tril](https://in.mathworks.com/help/matlab/ref/tril.html), [triu](https://in.mathworks.com/help/matlab/ref/triu.html)
 
 
-### Current Status:
-The [lu](LU.hpp) function has bugs, and needs improvement.
+### Issues: [#1](https://github.com/relaxxpls/CPPMatrixLib/issues/1)
