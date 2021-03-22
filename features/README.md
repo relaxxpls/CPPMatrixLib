@@ -38,5 +38,4 @@ end
 ```
 MATLAB references: [tril](https://in.mathworks.com/help/matlab/ref/tril.html), [triu](https://in.mathworks.com/help/matlab/ref/triu.html)
 
-
-### Issues: [#1](https://github.com/relaxxpls/CPPMatrixLib/issues/1)
+### Known Issues: [#1](https://github.com/relaxxpls/CPPMatrixLib/issues/1)
