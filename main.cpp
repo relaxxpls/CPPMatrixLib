@@ -2,6 +2,7 @@
 #include "matrix_utility.hpp"
 
 int main() {
+	/*
     // Initialisation of a 3*3 matrix with base value 2
     matrix<int> B(3, 3, 2);
 
@@ -26,8 +27,8 @@ int main() {
     std::cout << "matrix y2: \n" << y2 << std::endl;
 
     matrix<double> D = {{65, 77, 69, 75, 69},
-                              {61, 74, 70, 66, 68},
-                              {81, 80, 71, 74, 79}};
+                        {61, 74, 70, 66, 68},
+                        {81, 80, 71, 74, 79}};
 
     // Calculate norm
     std::cout << "L1 norm of D: " << norm(D, "L1") << std::endl;
@@ -63,5 +64,23 @@ int main() {
     }
     else {
         std::cout << "QR Decomposition Failed :(" << std::endl;
+    }
+	*/
+
+	// matrix<double> D = {{65, 77, 69, 75, 69},
+                        // {61, 74, 70, 66, 68},
+                        // {81, 80, 71, 74, 79}};
+	matrix<double> D = {{1, 1, 0},
+                        {2, 1, 3},
+                        {3, 1, 1}};
+
+    std::tuple<matrix<double>, matrix<double>> lu_tuple = lu(D);
+    matrix<double> l = std::get<0>(lu_tuple), u = std::get<1>(lu_tuple);
+    std::cout << "\nmatrix l: \n" <<  l << std::endl;
+    std::cout << "matrix u: \n" <<  u << std::endl;
+    std::cout << "matrix l*u: \n" <<  l*u << std::endl;
+
+    if (l*u == D) {
+        std::cout << "LU Decomposition Works :)" << std::endl;
     }
 }
