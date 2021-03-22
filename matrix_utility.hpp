@@ -179,6 +179,7 @@ matrix<T> rescale(const matrix<T> &m, T factor=0) {
     return res;
 }
 
+
 // Householder Method for QR decomposition
 template<typename T>
 std::tuple<matrix<T>, matrix<T>> qr_householder(matrix<T> m) {
@@ -215,6 +216,7 @@ std::tuple<matrix<T>, matrix<T>> qr_householder(matrix<T> m) {
     mQ = mQ.t();
     return std::make_tuple(mQ, mR);
 }
+
 
 // QR decomposition
 template<typename T>
