@@ -30,8 +30,8 @@ function mylu (matrix A) -> returns L and U
 Reference: [triu function](https://in.mathworks.com/help/matlab/ref/triu.html), [tril function](https://in.mathworks.com/help/matlab/ref/tril.html)  
 4. Finally add 2 lines at the end of main.cpp that shows `L*U == A`  
 
-Submission: Once you’ve finished the test, [mail me](desai.laxman2001@gmail.com) your repository (containing the `my_lu.cpp` file).  
-** If you are unable to complete the test due to lack of time, submit whatever you’ve done! **
+**Submission:** Once you’ve finished the test, [mail me](desai.laxman2001@gmail.com) your repository (containing the `my_lu.cpp` file).  
+*If you are unable to complete the test due to lack of time, **submit** whatever you’ve done!*
 
 ### Features: 
 * lightweight
