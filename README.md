@@ -1,17 +1,11 @@
 # CPPMatrixLib - A Portable Matrix Library in C++
 This is a simple matrix library, that is built to have a similar interface for matrices as compared to MATLAB or NumPy.
 
-### Features: 
-* lightweight
-* dependency-free
-* similar functioning to STL
-* variety of operators, including matrix-matrix operators and matrix-number operators and a bunch of linear algebra functions
-
 ### Proficiency Test: (Deadline: 23rd March 5PM)
 1.  Fork & clone [CPPMatrixLib](https://github.com/relaxxpls/CPPMatrixLib)
-2.  Go through [main.cpp](https://github.com/relaxxpls/CPPMatrixLib/blob/main/main.cpp)
+2.  Go through [main.cpp](https://github.com/relaxxpls/CPPMatrixLib/blob/main/main.cpp), and try to understand how the interface.
 2.  Add a file called as `my_lu.cpp`.
-3.  Inside your `my_lu.cpp` file, code a simple [LU Decomposition](https://www.geeksforgeeks.org/l-u-decomposition-system-linear-equations/), using the ‘matrix’ and ‘matrix_utility’ headers. [Sample code](https://www.tutorialspoint.com/cplusplus-program-to-perform-lu-decomposition-of-any-matrix). You can use the pseudocode provided below:
+3.  Inside your `my_lu.cpp` file, code a simple [LU Decomposition](https://www.geeksforgeeks.org/l-u-decomposition-system-linear-equations/), using the [matrix](https://github.com/relaxxpls/CPPMatrixLib/blob/main/matrix.hpp) and [matrix_utility](https://github.com/relaxxpls/CPPMatrixLib/blob/main/matrix_utility.hpp) headers. You can use the pseudocode provided below for reference:
 ```
 function mylu (matrix A) -> returns L and U
     R = rows of A
@@ -33,15 +27,17 @@ function mylu (matrix A) -> returns L and U
     L = tril(A,-1) + eye(R); U = triu(A)
     return L and U
 ```
-Reference:
-[triu](https://in.mathworks.com/help/matlab/ref/triu.html)  
-[tril](https://in.mathworks.com/help/matlab/ref/tril.html)  
-4. Finally add 2 lines at the end of main.cpp that shows L*U == A
-5. Your good to go!  
+Reference: [triu function](https://in.mathworks.com/help/matlab/ref/triu.html), [tril function](https://in.mathworks.com/help/matlab/ref/tril.html)  
+4. Finally add 2 lines at the end of main.cpp that shows `L*U == A`  
 
-Submission: Once you’ve finished the test, mail me the link to your fork containing the `my_lu.cpp` file.  
-If you are unable to complete the test due to lack of time, submit whatever you’ve done!
+Submission: Once you’ve finished the test, [mail me](desai.laxman2001@gmail.com) your repository (containing the `my_lu.cpp` file).  
+** If you are unable to complete the test due to lack of time, submit whatever you’ve done! **
 
+### Features: 
+* lightweight
+* dependency-free
+* similar functioning to STL
+* variety of operators, including matrix-matrix operators and matrix-number operators and a bunch of linear algebra functions
 
 ### Updates:  
 V1.5 Added QR Decomposition and a few usage examples in [main.cpp](https://github.com/relaxxpls/CPPMatrixLib/blob/main/main.cpp)
