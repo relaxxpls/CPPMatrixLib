@@ -10,7 +10,7 @@ int main() {
     std::tuple<matrix<double>, matrix<double>> lu_tuple = lu(E);
     matrix<double> l = std::get<0>(lu_tuple), u = std::get<1>(lu_tuple);
 
-    std::cout << "\nmatrix l: \n" <<  l << std::endl;
+    std::cout << "matrix l: \n" <<  l << std::endl;
     std::cout << "matrix u: \n" <<  u << std::endl;
     std::cout << "matrix l*u: \n" <<  l*u << std::endl;
 

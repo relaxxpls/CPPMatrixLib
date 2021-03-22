@@ -25,15 +25,14 @@ std::tuple<matrix<T>, matrix<T>> lu(matrix<T> A) {
     }
 
     matrix<T> L = eye<T>(R), U = zeros<T>(R);
-    std::cout << A << std::endl;
-    for (size_t i = 0; i < R; i++) {
-        for (size_t c = i; c < R; c++) {
-            U(i, c) += A(i, c);
+    for (size_t r = 0; r < R; r++) {
+        for (size_t c = r; c < R; c++) {
+            U(r, c) = A(r, c);
         }
     }
-    for (size_t i = 0; i < R; i++) {
-        for (size_t c = 0; c < i; c++) {
-            L(i, c) += A(i, c);
+    for (size_t r = 0; r < R; r++) {
+        for (size_t c = 0; c < r; c++) {
+            L(r, c) = A(r, c);
         }
     }
     return std::make_tuple(L, U);
