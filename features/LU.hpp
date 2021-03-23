@@ -16,10 +16,23 @@ std::tuple<matrix<T>, matrix<T>> lu(matrix<T> A) {
             std::cerr << ("LU decomposition has failed");
             return std::make_tuple(zeros<T>(0, 0), zeros<T>(0, 0));
         }
-        for (size_t j = i; j < R; j++) {
+        for (size_t j = i+1; j < R; j++) {
+            
+            //Loop was added
+            for(size_t k=0;k<i;k++){
+
+                A(j, i)-=(A(j,k)*A(k,i));
+            }
+
+             //Loop was added
+            for(size_t k=0;k<i;k++){
+
+                A(i, j)-=(A(i,k)*A(k,j));
+            }
+
             A(j, i) /= A(i, i);
         }
-        for (size_t j = i; j < R; j++) {
+        for (size_t j = i+1; j < R; j++) {
             A(j,j) -= A(j,i) * A(i,j);
         }
     }
