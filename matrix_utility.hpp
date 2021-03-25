@@ -243,5 +243,29 @@ std::tuple<matrix<T>, matrix<T>> qr(matrix<T> A) {
     }
     return std::make_tuple(Q, R);
 }
+// LU decomposition
+template<typename T>    
+std::tuple<matrix<T>, matrix<T>> mylu(matrix<T> A)
+{
+    size_t n = A.size().first;   	
+    matrix<T> L(n, n, 0), U(n, n, 0);
+    size_t temp; 
+    for(size_t j=0;j<n;j++) 
+    {
+        L(j,j) = 1;
+        for(size_t i =j+1;i<n;i++)
+        {
+            temp = A(i,j)/A(j,j);
+            A(i,j) = 0;
+            for(size_t k=j+1;k<n;k++)
+             L(i,j) = L(i,j) + temp;
+            {
+                A(i,k) = A(i,k) - A(j,k)*temp;
+            }
+        }
+    }
+    U = A;
+    return std::make_tuple(L,U);
+}
 
 #endif
