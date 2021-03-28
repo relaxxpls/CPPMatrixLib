@@ -22,7 +22,7 @@
 
 #ifndef _MATRIX_UTILITY_H_
 #define _MATRIX_UTILITY_H_
-#include "matrix.hpp"
+#include "matrix_array.hpp"
 #include <tuple>
 
 
