@@ -1,8 +1,8 @@
 #ifndef _LU_H_
 #define _LU_H_
 
-#include "../matrix.hpp"
-#include "../matrix_utility.hpp"
+#include "matrix.hpp"
+#include "matrix_utility.hpp"
 #include <tuple>
 
 // LU decomposition on non singular square matrices
