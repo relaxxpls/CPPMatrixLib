@@ -33,9 +33,9 @@
 
 #define _MN_ERR 1e-12
 
-struct range {
+struct span {
     size_t l, r, len;
-    range(size_t l, size_t r) : l(l), r(r), len(r-l+1) {
+    span(size_t l, size_t r) : l(l), r(r), len(r-l+1) {
         assert(0<=l && l<=r);
     }
 };
@@ -167,7 +167,7 @@ public:
         assert(0 <= r && r < R && 0 <= c && c < C);
         return M[r][c];
     }
-    matrix operator()(const range &row_range, const range &col_range) const {
+    matrix operator()(const span &row_range, const span &col_range) const {
         assert(row_range.r < R && col_range.r < C);
         matrix<T> res(row_range.len, col_range.len, 0);
         for (size_t r = 0; r < row_range.len; r++) {

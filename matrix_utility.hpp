@@ -32,6 +32,10 @@ matrix<T> zeros(size_t r, size_t c) {
     return matrix<T>(r, c, 0);
 }
 
+template <typename T>
+matrix<T> zeros(size_t r) {
+    return matrix<T>(r, r, 0);
+}
 
 // Identity matrix of size r*r
 template<typename T>
@@ -179,6 +183,7 @@ matrix<T> rescale(const matrix<T> &m, T factor=0) {
     return res;
 }
 
+
 // Householder Method for QR decomposition
 template<typename T>
 std::tuple<matrix<T>, matrix<T>> qr_householder(matrix<T> m) {
@@ -216,6 +221,7 @@ std::tuple<matrix<T>, matrix<T>> qr_householder(matrix<T> m) {
     return std::make_tuple(mQ, mR);
 }
 
+
 // QR decomposition
 template<typename T>
 std::tuple<matrix<T>, matrix<T>> qr(matrix<T> A) {
@@ -237,4 +243,5 @@ std::tuple<matrix<T>, matrix<T>> qr(matrix<T> A) {
     }
     return std::make_tuple(Q, R);
 }
+
 #endif
