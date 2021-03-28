@@ -8,7 +8,7 @@ int main() {
     // Exponentiation
     matrix<int> M = pow(B, 3);
 
-    // Edit single element
+    // edit single element
     M(1, 0) = 1;
 
     // M.t() = transpose of M (ie M')
