@@ -8,7 +8,7 @@ This is a simple matrix library, that is built to have a similar interface for m
 3.  Inside your `my_gauss_elim.cpp` file, implement a simple code to convert a given non-singular square matrix into its Row Echelon form (upper triangular matrix), using the [matrix](https://github.com/relaxxpls/CPPMatrixLib/blob/main/matrix.hpp) and [matrix_utility](https://github.com/relaxxpls/CPPMatrixLib/blob/main/matrix_utility.hpp) headers.
 4. Finally add a `main` function to your `my_gauss_elim.cpp` that shows your algorithm in action!
 
-**Submission:** Once you’ve finished the test, [mail me](mailto:desai.laxman2001@gmail.com) your repository (containing the `my_gauss_elim.cpp` file).  
+**Submission:** Once you’ve finished the test, [mail me](mailto:desai.laxman2001@gmail.com) a link to your repository (containing the `my_gauss_elim.cpp` file).  
 *If you are unable to complete the test due to lack of time, submit whatever you’ve done!*
 
 ---
@@ -38,3 +38,46 @@ The Big Picture:
 * Add functionality to solve Linear Equations (A*X = B)
 * Add documentation
 * Depict its use in solving Linear Recurrences as an example solve [Project Euler 258](https://projecteuler.net/problem=258)
+
+# LU Decomposition
+Split our matrix A into 2 matrices L & U, where L is a lower triangular matrix with diagonal entries as 1, and U is an upper triangular matrix.  
+We will use the [Doolittle Algorithm](https://www.geeksforgeeks.org/doolittle-algorithm-lu-decomposition/) for factoring our matrix into L and U.
+
+Eg:
+```
+A = [1   1   0]  
+    [2   1   3]  
+    [3   1   1] 
+```
+gets transformed into:
+```                 
+L = [1   0   0]   and   U = [1   1   0]
+    [2   1   0]             [1   1   0]
+    [3   2   1]             [0   0  -5]
+
+with L*U =  [1   1   0]  = A
+            [2   1   3]
+            [3   1   1]
+```
+
+Based on the following MATLAB code (Square Matrix):
+```
+function [L, U] = lu(A)
+    n = size(A, 1);
+    for i = 1 : n
+        if A(i, i) == 0
+            warning('LU factorization fails');
+            L = []; U = []; return; 
+        end
+        j = i+1 : n;
+        A(j, i) = A(j, i) / A(i, i);
+        A(j, j) = A(j, j) - A(j, i)*A(i, j);
+    end
+    L = tril(A, -1) + eye(n);
+    U = triu(A);
+end
+```
+MATLAB references: [tril](https://in.mathworks.com/help/matlab/ref/tril.html), [triu](https://in.mathworks.com/help/matlab/ref/triu.html)
+
+### Known Issues: [#1](https://github.com/relaxxpls/CPPMatrixLib/issues/1)
+
