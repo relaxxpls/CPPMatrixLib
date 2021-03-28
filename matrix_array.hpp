@@ -30,6 +30,7 @@
 #include <iterator>
 #include <cmath>
 #include <climits>
+#include <typeinfo>
 
 #define _MN_ERR 1e-12
 
@@ -53,7 +54,7 @@ public:
     // default constructor
     matrix() : R(0), C(0) {}
     // constructor from initializer_list
-    matrix(const std::initializer_list<std::vector<T>> m) {
+    /*matrix(const std::initializer_list<std::vector<T>> m) {
         R = m.size(), C = R > 0 ? m.begin()->size() : 0;
 
         M.resize(R*C, 0);
@@ -68,7 +69,49 @@ public:
             }
             r++;
         }
+    }*/
+
+    matrix(const std::initializer_list<std::vector<T>> m) {    
+        
+        auto it=m.end();
+        
+        if((--it)->size()==0){
+
+            C = m.size()-1, R = C > 0 ? m.begin()->size() : 0;
+
+            M.resize(R*C, 0);
+
+            size_t c=0;
+
+            for(auto i=m.begin();i!=m.end()-1;i++){
+
+                for(size_t j=0;j<i->size();j++){
+                
+                    M[j*C+c]=(*i)[j];   
+                }
+                c++;
+            }
+
+        }else{
+
+            R = m.size(), C = R > 0 ? m.begin()->size() : 0;
+
+            M.resize(R*C, 0);
+
+            size_t r=0;
+
+            for(auto i=m.begin();i!=m.end();i++){
+
+                for(size_t j=0;j<i->size();j++){
+
+                    M[r*C+j]=(*i)[j];
+                }
+                r++;
+            }
+        }
     }
+
+
 
     //  access size (rows, columns)
     bool empty() const {

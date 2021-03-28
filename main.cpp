@@ -31,12 +31,18 @@ int main() {
     matrix<int> y2 = X(span(0, 1), span(2, 2));
     std::cout << "matrix y2: \n" << y2 << std::endl;
 
-    matrix<double> D = {{65, 77, 69, 75, 69},
-                        {61, 74, 70, 66, 68},
-                        {81, 80, 71, 74, 79}};
+    //Initializing column wise
+    matrix<double> Dcol = {{65, 77, 69, 75, 69},
+                           {61, 74, 70, 66, 68},
+                           {81, 80, 71, 74, 79},
+                           {}};
+
+    matrix<double> Drow = {{65, 77, 69, 75, 69},
+                           {61, 74, 70, 66, 68},
+                           {81, 80, 71, 74, 79}};
 
     // Calculate norm
-    std::cout << "L1 norm of D: " << norm(D, "L1") << std::endl;
+    std::cout << "L1 norm of Drow: " << norm(Drow, "L1") << std::endl;
 
     // Print the range of values (max - min) stored in either column (1) or row (2)
     // std::cout << range(D, 2) << std::endl;
@@ -47,43 +53,65 @@ int main() {
               << range(0, 10, 3)
               << std::endl;
 
+    std::cout<<Drow<<std::endl;
+
+    std::cout<<Dcol<<std::endl;
+    
     // Matrix rows
-    matrix<double> c1 = D.column(4);
+    matrix<double> c1 = Drow.column(2);
     std::cout << "matrix c1: \n" << c1 << std::endl;
 
     // Matrix columns
-    matrix<double> r1 = D.row(3);
+    matrix<double> r1 = Dcol.row(3);
     std::cout << "matrix r1: \n" << r1 << std::endl;
 
     // Test QR decomposition:
-    std::tuple<matrix<double>, matrix<double>> qr_tuple= qr(D);
+    std::tuple<matrix<double>, matrix<double>> qr_tuple= qr(Dcol);
     matrix<double> q = std::get<0>(qr_tuple), r = std::get<1>(qr_tuple);
     // Alternate Method:
     // matrix<int> q(3, 5), r(5, 5);
     // std::tie(q, r) = qr(D);
 
-    std::cout << "matrix D: \n" << D << std::endl;
+    std::cout << "matrix Dcol: \n" << Dcol << std::endl;
     std::cout << "matrix q*r: \n" << q*r << std::endl;
-    if (q*r == D) {
+    if (q*r == Dcol) {
         std::cout << "QR Decomposition Works :)" << std::endl;
     }
     else {
         std::cout << "QR Decomposition Failed :(" << std::endl;
     }
     
-    matrix<double> E = {{36, 42, 0, 64},
-                        {78, 90, 21, 12},
-                        {11, 32, 45, 8},
-                        {69, 21, 29, 97}};
+    matrix<double> Erow = {{36, 42, 0, 64},
+                           {78, 90, 21, 12},
+                           {11, 32, 45, 8},
+                           {69, 21, 29, 97}};
+    
+    matrix<double> Ecol = {{36, 42, 0, 64},
+                           {78, 90, 21, 12},
+                           {11, 32, 45, 8},
+                           {69, 21, 29, 97},
+                           {}};
 
-    std::tuple<matrix<double>, matrix<double>> lu_tuple = lu(E);
+
+    std::tuple<matrix<double>, matrix<double>> lu_tuple = lu(Erow);
     matrix<double> l = std::get<0>(lu_tuple), u = std::get<1>(lu_tuple);
 
     std::cout << "matrix l: \n" <<  l << std::endl;
     std::cout << "matrix u: \n" <<  u << std::endl;
     std::cout << "matrix l*u: \n" <<  l*u << std::endl;
 
-    if (l*u == E) {
+    if (l*u == Erow) {
+        std::cout << "LU Decomposition Works :)" << std::endl;
+    }
+
+    lu_tuple = lu(Ecol);
+    l = std::get<0>(lu_tuple); u = std::get<1>(lu_tuple);
+
+    std::cout << "matrix l: \n" <<  l << std::endl;
+    std::cout << "matrix u: \n" <<  u << std::endl;
+    std::cout << "matrix l*u: \n" <<  l*u << std::endl;
+
+    if (l*u == Ecol) {
         std::cout << "LU Decomposition Works :)" << std::endl;
     }
 }
