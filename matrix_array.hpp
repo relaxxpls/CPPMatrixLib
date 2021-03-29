@@ -87,7 +87,7 @@ public:
 
                 for(size_t j=0;j<i->size();j++){
                 
-                    M[j*C+c]=(*i)[j];   
+                    (*this)(j,c)=(*i)[j];   
                 }
                 c++;
             }
@@ -104,14 +104,12 @@ public:
 
                 for(size_t j=0;j<i->size();j++){
 
-                    M[r*C+j]=(*i)[j];
+                    (*this)(r,j)=(*i)[j];
                 }
                 r++;
             }
         }
     }
-
-
 
     //  access size (rows, columns)
     bool empty() const {
@@ -138,7 +136,7 @@ public:
 
             for (size_t c = 0; c < C; c++) {
 
-                M[r*C+c] += rhs(r, c);
+                (*this)(r,c) += rhs(r, c);
             }
         }
         return *this;
@@ -147,7 +145,7 @@ public:
         assert(R == rhs.R && C == rhs.C);
         for (size_t r = 0; r < R; r++) {
             for (size_t c = 0; c < C; c++) {
-                M[r*C+c] -= rhs(r, c);
+                (*this)(r,c) -= rhs(r, c);
             }
         }
         return *this;
@@ -158,7 +156,7 @@ public:
         for (size_t r = 0; r < res.R; r++) {
             for (size_t c = 0; c<res.C; c++) {
                 for (size_t i = 0; i < C; i++) {
-                    res(r, c) += M[r*C+i] * rhs(i, c);
+                    res(r, c) += (*this)(r,i) * rhs(i, c);
                 }
             }
         }
@@ -176,7 +174,7 @@ public:
     matrix operator*=(const T &rhs) {
         for (size_t r = 0; r < R; r++) {
             for (size_t c = 0; c < C; c++) {
-                M[r*C+c] *= rhs;
+                (*this)(r,c) *= rhs;
             }
         }
         return *this;
@@ -200,7 +198,7 @@ public:
         double L2 = 0;
         for (size_t i = 0; i < R; i++) {
             for (size_t j = 0; j < C; j++) {
-                L2 += (M[i*C+j] - rhs(i, j)) * (M[i*C+j] - rhs(i, j));
+                L2 += ((*this)(i,j) - rhs(i, j)) * ((*this)(i,j) - rhs(i, j));
             }
         }
         L2 /= R*C;
@@ -219,22 +217,25 @@ public:
 
     // access data operators
     T& operator[](size_t i) {
-        return M[(i % R)*R+(i / R)];
+        return (*this)((i % R),(i / R));
     }
+
     T& operator()(size_t r, size_t c) {
         assert(0 <= r && r < R && 0 <= c && c < C);
         return M[r*C+c];
     }
+    
     T operator()(size_t r, size_t c) const {
         assert(0 <= r && r < R && 0 <= c && c < C);
         return M[r*C+c];
     }
+    
     matrix operator()(const span &row_range, const span &col_range) const {
         assert(row_range.r < R && col_range.r < C);
         matrix<T> res(row_range.len, col_range.len, 0);
         for (size_t r = 0; r < row_range.len; r++) {
             for (size_t c = 0; c < col_range.len; c++)
-                res(r, c) = M[(row_range.l + r)*C+col_range.l + c];
+                res(r, c) = (*this)((row_range.l + r),(col_range.l + c));
         }
         return res;
     }
@@ -244,7 +245,7 @@ public:
         matrix res(C, R);
         for (size_t r = 0; r < R; r++) {
             for (size_t c = 0; c < C; c++) {
-                res(c, r) += M[r*C+c];
+                res(c, r) += (*this)(r,c);
             }
         }
         return res;
@@ -258,7 +259,7 @@ public:
         }
         for (int r = d; r < R; r++) {
             for (int c = d; c < C; c++) {
-                res(r, c) = M[r*C+c];
+                res(r, c) = (*this)(r,c);
             }
         }
         return res;
@@ -268,7 +269,7 @@ public:
     matrix column(int c) const {
         matrix<T> res(R, 1);
         for (size_t r = 0; r < R; r++) {
-            res(r, 0) = M[r*C+c];
+            res(r, 0) = (*this)(r,c);
         }
         return res;
     }
@@ -277,7 +278,7 @@ public:
     matrix row(int r) const {
         matrix<T> res(1, C);
         for (size_t c = 0; c < C; c++) {
-            res(0, c) = M[r*C+c];
+            res(0, c) = (*this)(r,c);
         }
         return res;
     }
