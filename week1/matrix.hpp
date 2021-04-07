@@ -30,6 +30,8 @@
 #include <iterator>
 #include <cmath>
 #include <climits>
+#include <ctime>
+#include <random>
 
 #define _MN_ERR 1e-12
 
@@ -47,6 +49,18 @@ public:
     // constructor with memory allocation
     matrix(size_t r, size_t c, T x=0) : R(r), C(c) {
         M.assign(R, std::vector<T>(C, x));
+    }
+
+    // constructor with random integers
+    /*matrix(size_t r, size_t c) : R(r), C(c) {
+        srand(time(0));
+        M.assign(R, std::vector<T>(C, rand()));
+    }*/
+    matrix(size_t r, size_t c, std::pair< int , int> a = {0, RAND_MAX}) : R(r), C(c) {
+        srand(time(0));
+        M.assign(R, std::vector<T>(C, 0));
+        for (auto& v: M) 
+            for (auto& i: v) i = rand() % a.second  + a.first;
     }
 
     // default constructor
