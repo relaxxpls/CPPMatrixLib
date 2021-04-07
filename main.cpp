@@ -1,6 +1,5 @@
 #include "matrix.hpp"
 #include "matrix_utility.hpp"
-#include "my_gauss_elim.hpp"
 
 int main() {
     // Initialisation of a 3*3 matrix with base value 2
@@ -65,19 +64,6 @@ int main() {
     else {
         std::cout << "QR Decomposition Failed :(" << std::endl;
     }
-
-    //Test gauss elimination
-    std::cout << "\nTesting Gauss Elimination\n";
-    int N = 3; //size of matrix
-    matrix < double > orignal = {{3, 2, 1},
-                            {2, 1, 1},
-                            {6, 2, 4}};
-
-    std::cout << "Orignal Matrix: \n" << orignal << std::endl;
-
-    matrix < double > rematrix = re(orignal, N);
-
-    std::cout << "Matrix in row Echleon Form: \n" << rematrix; 
 
     return 0;
 }
