@@ -244,5 +244,4 @@ std::tuple<matrix<T>, matrix<T>> qr(matrix<T> A) {
     return std::make_tuple(Q, R);
 }
 
-
 #endif
