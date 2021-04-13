@@ -64,4 +64,8 @@ int main() {
     else {
         std::cout << "QR Decomposition Failed :(" << std::endl;
     }
+
+    matrix<double> rM = random_matrix<double> (3,3, {0,20});
+    std::cout << rM;
+    return 0;
 }
