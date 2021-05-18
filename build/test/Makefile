@@ -56,10 +56,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\parth\Desktop\Coding Material\C++\SoC - Matrix\CPPMatrixLib\tests"
+CMAKE_SOURCE_DIR = C:\Users\parth\Desktop\SoC\CPPMatrixLib\tests
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\parth\Desktop\Coding Material\C++\SoC - Matrix\CPPMatrixLib\build"
+CMAKE_BINARY_DIR = C:\Users\parth\Desktop\SoC\CPPMatrixLib\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -141,14 +141,14 @@ list_install_components/fast: list_install_components
 
 # The main all target
 all: cmake_check_build_system
-	cd /d C:\Users\parth\Desktop\CODING~1\C__~1\SOC-MA~1\CPPMAT~1\build && $(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\parth\Desktop\Coding Material\C++\SoC - Matrix\CPPMatrixLib\build\CMakeFiles" "C:\Users\parth\Desktop\Coding Material\C++\SoC - Matrix\CPPMatrixLib\build\test\\CMakeFiles\progress.marks"
-	cd /d C:\Users\parth\Desktop\CODING~1\C__~1\SOC-MA~1\CPPMAT~1\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 test/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\parth\Desktop\Coding Material\C++\SoC - Matrix\CPPMatrixLib\build\CMakeFiles" 0
+	cd /d C:\Users\parth\Desktop\SoC\CPPMatrixLib\build && $(CMAKE_COMMAND) -E cmake_progress_start C:\Users\parth\Desktop\SoC\CPPMatrixLib\build\CMakeFiles C:\Users\parth\Desktop\SoC\CPPMatrixLib\build\test\\CMakeFiles\progress.marks
+	cd /d C:\Users\parth\Desktop\SoC\CPPMatrixLib\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 test/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\parth\Desktop\SoC\CPPMatrixLib\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /d C:\Users\parth\Desktop\CODING~1\C__~1\SOC-MA~1\CPPMAT~1\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 test/clean
+	cd /d C:\Users\parth\Desktop\SoC\CPPMatrixLib\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 test/clean
 .PHONY : clean
 
 # The main clean target
@@ -157,22 +157,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /d C:\Users\parth\Desktop\CODING~1\C__~1\SOC-MA~1\CPPMAT~1\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 test/preinstall
+	cd /d C:\Users\parth\Desktop\SoC\CPPMatrixLib\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 test/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /d C:\Users\parth\Desktop\CODING~1\C__~1\SOC-MA~1\CPPMAT~1\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 test/preinstall
+	cd /d C:\Users\parth\Desktop\SoC\CPPMatrixLib\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 test/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /d C:\Users\parth\Desktop\CODING~1\C__~1\SOC-MA~1\CPPMAT~1\build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
+	cd /d C:\Users\parth\Desktop\SoC\CPPMatrixLib\build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 test/CMakeFiles/MatrixTests.dir/rule:
-	cd /d C:\Users\parth\Desktop\CODING~1\C__~1\SOC-MA~1\CPPMAT~1\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 test/CMakeFiles/MatrixTests.dir/rule
+	cd /d C:\Users\parth\Desktop\SoC\CPPMatrixLib\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 test/CMakeFiles/MatrixTests.dir/rule
 .PHONY : test/CMakeFiles/MatrixTests.dir/rule
 
 # Convenience name for target.
@@ -181,7 +181,7 @@ MatrixTests: test/CMakeFiles/MatrixTests.dir/rule
 
 # fast build rule for target.
 MatrixTests/fast:
-	cd /d C:\Users\parth\Desktop\CODING~1\C__~1\SOC-MA~1\CPPMAT~1\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\MatrixTests.dir\build.make test/CMakeFiles/MatrixTests.dir/build
+	cd /d C:\Users\parth\Desktop\SoC\CPPMatrixLib\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\MatrixTests.dir\build.make test/CMakeFiles/MatrixTests.dir/build
 .PHONY : MatrixTests/fast
 
 MatrixTests.obj: MatrixTests.cpp.obj
@@ -189,7 +189,7 @@ MatrixTests.obj: MatrixTests.cpp.obj
 
 # target to build an object file
 MatrixTests.cpp.obj:
-	cd /d C:\Users\parth\Desktop\CODING~1\C__~1\SOC-MA~1\CPPMAT~1\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\MatrixTests.dir\build.make test/CMakeFiles/MatrixTests.dir/MatrixTests.cpp.obj
+	cd /d C:\Users\parth\Desktop\SoC\CPPMatrixLib\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\MatrixTests.dir\build.make test/CMakeFiles/MatrixTests.dir/MatrixTests.cpp.obj
 .PHONY : MatrixTests.cpp.obj
 
 MatrixTests.i: MatrixTests.cpp.i
@@ -197,7 +197,7 @@ MatrixTests.i: MatrixTests.cpp.i
 
 # target to preprocess a source file
 MatrixTests.cpp.i:
-	cd /d C:\Users\parth\Desktop\CODING~1\C__~1\SOC-MA~1\CPPMAT~1\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\MatrixTests.dir\build.make test/CMakeFiles/MatrixTests.dir/MatrixTests.cpp.i
+	cd /d C:\Users\parth\Desktop\SoC\CPPMatrixLib\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\MatrixTests.dir\build.make test/CMakeFiles/MatrixTests.dir/MatrixTests.cpp.i
 .PHONY : MatrixTests.cpp.i
 
 MatrixTests.s: MatrixTests.cpp.s
@@ -205,7 +205,7 @@ MatrixTests.s: MatrixTests.cpp.s
 
 # target to generate assembly for a file
 MatrixTests.cpp.s:
-	cd /d C:\Users\parth\Desktop\CODING~1\C__~1\SOC-MA~1\CPPMAT~1\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\MatrixTests.dir\build.make test/CMakeFiles/MatrixTests.dir/MatrixTests.cpp.s
+	cd /d C:\Users\parth\Desktop\SoC\CPPMatrixLib\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\MatrixTests.dir\build.make test/CMakeFiles/MatrixTests.dir/MatrixTests.cpp.s
 .PHONY : MatrixTests.cpp.s
 
 # Help Target
@@ -236,6 +236,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /d C:\Users\parth\Desktop\CODING~1\C__~1\SOC-MA~1\CPPMAT~1\build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 0
+	cd /d C:\Users\parth\Desktop\SoC\CPPMatrixLib\build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -91,6 +91,20 @@ public:
         return *this;
     }
     matrix operator*=(const matrix &rhs) {
+        
+        *this=(*this)*rhs;
+
+        return *this;
+
+    }
+    matrix operator+(const matrix &rhs) const {
+        return matrix(*this) += rhs;
+    }
+    matrix operator-(const matrix &rhs) const {
+        return matrix(*this) -= rhs;
+    }
+    matrix operator*(const matrix &rhs) const {
+        
         assert(C == rhs.R);
         matrix res(R, rhs.C, 0);
         for (size_t r = 0; r < res.R; r++) {
@@ -101,15 +115,6 @@ public:
             }
         }
         return res;
-    }
-    matrix operator+(const matrix &rhs) const {
-        return matrix(*this) += rhs;
-    }
-    matrix operator-(const matrix &rhs) const {
-        return matrix(*this) -= rhs;
-    }
-    matrix operator*(const matrix &rhs) const {
-        return matrix(*this) *= rhs;
     }
     matrix operator*=(const T &rhs) {
         for (size_t r = 0; r < R; r++) {

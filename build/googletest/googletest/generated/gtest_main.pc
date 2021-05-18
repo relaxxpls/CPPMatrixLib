@@ -1,5 +1,5 @@
-libdir=C:/Program Files (x86)/This/lib
-includedir=C:/Program Files (x86)/This/include
+libdir=C:/Program Files (x86)/Matrix/lib
+includedir=C:/Program Files (x86)/Matrix/include
 
 Name: gtest_main
 Description: GoogleTest (with main() function)

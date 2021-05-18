@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/parth/Desktop/Coding Material/C++/SoC - Matrix/CPPMatrixLib/tests/googletest
+# Install script for directory: C:/Users/parth/Desktop/SoC/CPPMatrixLib/tests/googletest
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/This")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/Matrix")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/Users/parth/Desktop/Coding Material/C++/SoC - Matrix/CPPMatrixLib/build/googletest/googlemock/cmake_install.cmake")
+  include("C:/Users/parth/Desktop/SoC/CPPMatrixLib/build/googletest/googlemock/cmake_install.cmake")
 
 endif()
 

@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/parth/Desktop/Coding Material/C++/SoC - Matrix/CPPMatrixLib/tests/test
+# Install script for directory: C:/Users/parth/Desktop/SoC/CPPMatrixLib/tests/test
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/This")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/Matrix")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

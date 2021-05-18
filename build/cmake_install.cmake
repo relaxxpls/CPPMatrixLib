@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/parth/Desktop/Coding Material/C++/SoC - Matrix/CPPMatrixLib/tests
+# Install script for directory: C:/Users/parth/Desktop/SoC/CPPMatrixLib/tests
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/This")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/Matrix")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -39,12 +39,12 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/parth/Desktop/Coding Material/C++/SoC - Matrix/CPPMatrixLib/build/googletest/cmake_install.cmake")
+  include("C:/Users/parth/Desktop/SoC/CPPMatrixLib/build/googletest/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/parth/Desktop/Coding Material/C++/SoC - Matrix/CPPMatrixLib/build/test/cmake_install.cmake")
+  include("C:/Users/parth/Desktop/SoC/CPPMatrixLib/build/test/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -55,5 +55,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/parth/Desktop/Coding Material/C++/SoC - Matrix/CPPMatrixLib/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/parth/Desktop/SoC/CPPMatrixLib/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

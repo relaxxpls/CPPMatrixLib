@@ -52,10 +52,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\parth\Desktop\Coding Material\C++\SoC - Matrix\CPPMatrixLib\tests"
+CMAKE_SOURCE_DIR = C:\Users\parth\Desktop\SoC\CPPMatrixLib\tests
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\parth\Desktop\Coding Material\C++\SoC - Matrix\CPPMatrixLib\build"
+CMAKE_BINARY_DIR = C:\Users\parth\Desktop\SoC\CPPMatrixLib\build
 
 # Include any dependencies generated for this target.
 include googletest/googletest/CMakeFiles/gtest.dir/depend.make
@@ -70,18 +70,18 @@ include googletest/googletest/CMakeFiles/gtest.dir/flags.make
 
 googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj: googletest/googletest/CMakeFiles/gtest.dir/flags.make
 googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj: googletest/googletest/CMakeFiles/gtest.dir/includes_CXX.rsp
-googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj: C:/Users/parth/Desktop/Coding\ Material/C++/SoC\ -\ Matrix/CPPMatrixLib/tests/googletest/googletest/src/gtest-all.cc
+googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj: C:/Users/parth/Desktop/SoC/CPPMatrixLib/tests/googletest/googletest/src/gtest-all.cc
 googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj: googletest/googletest/CMakeFiles/gtest.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\parth\Desktop\Coding Material\C++\SoC - Matrix\CPPMatrixLib\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj"
-	cd /d C:\Users\parth\Desktop\CODING~1\C__~1\SOC-MA~1\CPPMAT~1\build\GOOGLE~1\GOOGLE~2 && C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\X86_64~2.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj -MF CMakeFiles\gtest.dir\src\gtest-all.cc.obj.d -o CMakeFiles\gtest.dir\src\gtest-all.cc.obj -c "C:\Users\parth\Desktop\Coding Material\C++\SoC - Matrix\CPPMatrixLib\tests\googletest\googletest\src\gtest-all.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\parth\Desktop\SoC\CPPMatrixLib\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj"
+	cd /d C:\Users\parth\Desktop\SoC\CPPMatrixLib\build\googletest\googletest && C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\X86_64~2.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj -MF CMakeFiles\gtest.dir\src\gtest-all.cc.obj.d -o CMakeFiles\gtest.dir\src\gtest-all.cc.obj -c C:\Users\parth\Desktop\SoC\CPPMatrixLib\tests\googletest\googletest\src\gtest-all.cc
 
 googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gtest.dir/src/gtest-all.cc.i"
-	cd /d C:\Users\parth\Desktop\CODING~1\C__~1\SOC-MA~1\CPPMAT~1\build\GOOGLE~1\GOOGLE~2 && C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\X86_64~2.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\parth\Desktop\Coding Material\C++\SoC - Matrix\CPPMatrixLib\tests\googletest\googletest\src\gtest-all.cc" > CMakeFiles\gtest.dir\src\gtest-all.cc.i
+	cd /d C:\Users\parth\Desktop\SoC\CPPMatrixLib\build\googletest\googletest && C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\X86_64~2.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\parth\Desktop\SoC\CPPMatrixLib\tests\googletest\googletest\src\gtest-all.cc > CMakeFiles\gtest.dir\src\gtest-all.cc.i
 
 googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gtest.dir/src/gtest-all.cc.s"
-	cd /d C:\Users\parth\Desktop\CODING~1\C__~1\SOC-MA~1\CPPMAT~1\build\GOOGLE~1\GOOGLE~2 && C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\X86_64~2.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\parth\Desktop\Coding Material\C++\SoC - Matrix\CPPMatrixLib\tests\googletest\googletest\src\gtest-all.cc" -o CMakeFiles\gtest.dir\src\gtest-all.cc.s
+	cd /d C:\Users\parth\Desktop\SoC\CPPMatrixLib\build\googletest\googletest && C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\X86_64~2.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\parth\Desktop\SoC\CPPMatrixLib\tests\googletest\googletest\src\gtest-all.cc -o CMakeFiles\gtest.dir\src\gtest-all.cc.s
 
 # Object files for target gtest
 gtest_OBJECTS = \
@@ -93,19 +93,19 @@ gtest_EXTERNAL_OBJECTS =
 lib/libgtestd.a: googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj
 lib/libgtestd.a: googletest/googletest/CMakeFiles/gtest.dir/build.make
 lib/libgtestd.a: googletest/googletest/CMakeFiles/gtest.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\parth\Desktop\Coding Material\C++\SoC - Matrix\CPPMatrixLib\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library ..\..\lib\libgtestd.a"
-	cd /d C:\Users\parth\Desktop\CODING~1\C__~1\SOC-MA~1\CPPMAT~1\build\GOOGLE~1\GOOGLE~2 && $(CMAKE_COMMAND) -P CMakeFiles\gtest.dir\cmake_clean_target.cmake
-	cd /d C:\Users\parth\Desktop\CODING~1\C__~1\SOC-MA~1\CPPMAT~1\build\GOOGLE~1\GOOGLE~2 && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\gtest.dir\link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\parth\Desktop\SoC\CPPMatrixLib\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library ..\..\lib\libgtestd.a"
+	cd /d C:\Users\parth\Desktop\SoC\CPPMatrixLib\build\googletest\googletest && $(CMAKE_COMMAND) -P CMakeFiles\gtest.dir\cmake_clean_target.cmake
+	cd /d C:\Users\parth\Desktop\SoC\CPPMatrixLib\build\googletest\googletest && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\gtest.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 googletest/googletest/CMakeFiles/gtest.dir/build: lib/libgtestd.a
 .PHONY : googletest/googletest/CMakeFiles/gtest.dir/build
 
 googletest/googletest/CMakeFiles/gtest.dir/clean:
-	cd /d C:\Users\parth\Desktop\CODING~1\C__~1\SOC-MA~1\CPPMAT~1\build\GOOGLE~1\GOOGLE~2 && $(CMAKE_COMMAND) -P CMakeFiles\gtest.dir\cmake_clean.cmake
+	cd /d C:\Users\parth\Desktop\SoC\CPPMatrixLib\build\googletest\googletest && $(CMAKE_COMMAND) -P CMakeFiles\gtest.dir\cmake_clean.cmake
 .PHONY : googletest/googletest/CMakeFiles/gtest.dir/clean
 
 googletest/googletest/CMakeFiles/gtest.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "C:\Users\parth\Desktop\Coding Material\C++\SoC - Matrix\CPPMatrixLib\tests" "C:\Users\parth\Desktop\Coding Material\C++\SoC - Matrix\CPPMatrixLib\tests\googletest\googletest" "C:\Users\parth\Desktop\Coding Material\C++\SoC - Matrix\CPPMatrixLib\build" "C:\Users\parth\Desktop\Coding Material\C++\SoC - Matrix\CPPMatrixLib\build\googletest\googletest" "C:\Users\parth\Desktop\Coding Material\C++\SoC - Matrix\CPPMatrixLib\build\googletest\googletest\CMakeFiles\gtest.dir\DependInfo.cmake" --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\parth\Desktop\SoC\CPPMatrixLib\tests C:\Users\parth\Desktop\SoC\CPPMatrixLib\tests\googletest\googletest C:\Users\parth\Desktop\SoC\CPPMatrixLib\build C:\Users\parth\Desktop\SoC\CPPMatrixLib\build\googletest\googletest C:\Users\parth\Desktop\SoC\CPPMatrixLib\build\googletest\googletest\CMakeFiles\gtest.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : googletest/googletest/CMakeFiles/gtest.dir/depend
 

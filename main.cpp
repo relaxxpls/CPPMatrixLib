@@ -6,7 +6,9 @@ int main() {
     matrix<int> B(3, 3, 2);
 
     // Exponentiation
-    matrix<int> M = pow(B, 3);
+    matrix<int> M = pow(B, 5);
+
+    std::cout<<M<<std::endl;
 
     // edit single element
     M(1, 0) = 1;
