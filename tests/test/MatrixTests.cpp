@@ -4,6 +4,8 @@
 
 TEST(MATRIX,Addition){
 
+    // Manual Checking of addition of two random matrices
+    
     matrix<int> M1={{4, 2, 3},
                     {7, 9, 10},
                     {-4, -9, 2}};
@@ -20,6 +22,8 @@ TEST(MATRIX,Addition){
 
     std::pair<int,int> a={-32767,32767};
 
+    // Checking that sum of additive inverse of matrices is indeed 0
+    
     for(size_t i=1;i<=20;i++){
 
         M1.resize(i,i);
@@ -42,6 +46,8 @@ TEST(MATRIX,Addition){
 
 TEST (MATRIX,Multiplication){
 
+    // Manual Checking of multiplication of two random matrices
+    
     matrix<int> M1={{4, 2, 3},
                     {7, 9, 10},
                     {-4, -9, 2}};
@@ -58,6 +64,8 @@ TEST (MATRIX,Multiplication){
 
     std::pair<int,int> a={-32767,32767};
 
+    //Checking any matrix multiplied with identity matrix return same matrix
+    
     for(size_t i=1;i<=20;i++){
 
         for(size_t j=1;j<=20;j++){
@@ -71,6 +79,8 @@ TEST (MATRIX,Multiplication){
 
         }
     }
+
+    // Checking any matrix multiplied with zero matrix gives zero matrix
 
     for(size_t i=1;i<=20;i++){
 
@@ -94,6 +104,8 @@ TEST(MATRIX_UTILITY, Power){
 
     fibo[1]=1;
 
+    //Checking Fibonacci Numbers through Matrices
+
     for(int i=1;i<=46;i++){
 
         if(i!=1){
@@ -113,6 +125,8 @@ TEST(MATRIX_UTILITY, Power){
         ASSERT_EQ(fibo[i],M(0,0));
     }
 
+    //Random Matrices
+    
     for(int i=1;i<=20;i++){
 
         matrix<int> M=random_matrix<int>(i,i,{-32767,32767},i);
