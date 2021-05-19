@@ -57,7 +57,7 @@ matrix<T> pow(matrix<T> m, int k) {
     if (k == 0) {
         return eye<T>(R);
     }
-    matrix<T> res = m;
+    matrix<T> res = eye<T>(R);
     for (int i = k; i > 0; i>>=1) {
         res = (i&1) ? res*m : res;
         m *= m;
