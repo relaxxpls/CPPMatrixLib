@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16.3)
 
-set(This CPPMatrixLib)
+set(This src)
 
 project(${This} C CXX)
 
