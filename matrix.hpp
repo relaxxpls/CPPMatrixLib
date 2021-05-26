@@ -30,6 +30,7 @@
 #include <iterator>
 #include <cmath>
 #include <climits>
+#include <typeinfo>
 
 #define _MN_ERR 1e-12
 
@@ -91,6 +92,20 @@ public:
         return *this;
     }
     matrix operator*=(const matrix &rhs) {
+        
+        *this=(*this)*rhs;
+
+        return *this;
+
+    }
+    matrix operator+(const matrix &rhs) const {
+        return matrix(*this) += rhs;
+    }
+    matrix operator-(const matrix &rhs) const {
+        return matrix(*this) -= rhs;
+    }
+    matrix operator*(const matrix &rhs) const {
+        
         assert(C == rhs.R);
         matrix res(R, rhs.C, 0);
         for (size_t r = 0; r < res.R; r++) {
@@ -101,15 +116,6 @@ public:
             }
         }
         return res;
-    }
-    matrix operator+(const matrix &rhs) const {
-        return matrix(*this) += rhs;
-    }
-    matrix operator-(const matrix &rhs) const {
-        return matrix(*this) -= rhs;
-    }
-    matrix operator*(const matrix &rhs) const {
-        return matrix(*this) *= rhs;
     }
     matrix operator*=(const T &rhs) {
         for (size_t r = 0; r < R; r++) {
@@ -132,17 +138,33 @@ public:
 
     // L2 norm of A-B (ie ||A-B||^2) must be lesser than _MN_ERR (=1e-12)
     bool operator==(const matrix &rhs) const {
-        if (empty() || R != rhs.R || C != rhs.C) {
+        if (empty() || rhs.empty() || R != rhs.R || C != rhs.C) {
             return false;
         }
-        double L2 = 0;
-        for (size_t i = 0; i < R; i++) {
-            for (size_t j = 0; j < C; j++) {
-                L2 += (M[i][j] - rhs(i, j)) * (M[i][j] - rhs(i, j));
-            }
+        if( typeid(M[0][0]).name()!=typeid(rhs(0,0)).name() ) {
+            return false;
         }
-        L2 /= R*C;
-        return L2 < _MN_ERR;
+        if( typeid(M[0][0]).name()=="f" || typeid(M[0][0]).name()=="d" || typeid(M[0][0]).name()=="e" ) {
+            double L2 = 0;
+            for (size_t i = 0; i < R; i++) {
+                for (size_t j = 0; j < C; j++) {
+                    L2 += (M[i][j] - rhs(i, j)) * (M[i][j] - rhs(i, j));
+                }
+            }
+            L2 /= R*C;
+            return L2 < _MN_ERR;
+        }
+        else {
+            for (size_t i = 0; i < R; i++) {
+                for (size_t j = 0; j < C; j++) {
+                    if( M[i][j]!=rhs(i,j) )
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
     }
     bool operator!=(const matrix &rhs) const {
         return !(*this == rhs);
