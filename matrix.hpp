@@ -30,7 +30,7 @@
 #include <iterator>
 #include <cmath>
 #include <climits>
-#include <typeinfo>
+#include <type_traits>
 
 #define _MN_ERR 1e-12
 
@@ -137,34 +137,34 @@ public:
     }
 
     // L2 norm of A-B (ie ||A-B||^2) must be lesser than _MN_ERR (=1e-12)
+    bool equality_floating_point(const matrix &rhs) const {
+        double L2 = 0;
+        for (size_t i = 0; i < R; i++) {
+            for (size_t j = 0; j < C; j++) {
+                L2 += (M[i][j] - rhs(i, j)) * (M[i][j] - rhs(i, j));
+            }
+        }
+        L2 /= R*C;
+        return L2 < _MN_ERR;
+    }
+    bool equality_integral(const matrix &rhs) const {
+        for (size_t i = 0; i < R; i++) {
+            for (size_t j = 0; j < C; j++) {
+                if( M[i][j]!=rhs(i,j) ) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
     bool operator==(const matrix &rhs) const {
         if (empty() || rhs.empty() || R != rhs.R || C != rhs.C) {
             return false;
         }
-        if( typeid(M[0][0]).name()!=typeid(rhs(0,0)).name() ) {
-            return false;
+        if(std::is_floating_point<T>::value) {
+            return this->equality_floating_point(rhs);
         }
-        if( typeid(M[0][0]).name()=="f" || typeid(M[0][0]).name()=="d" || typeid(M[0][0]).name()=="e" ) {
-            double L2 = 0;
-            for (size_t i = 0; i < R; i++) {
-                for (size_t j = 0; j < C; j++) {
-                    L2 += (M[i][j] - rhs(i, j)) * (M[i][j] - rhs(i, j));
-                }
-            }
-            L2 /= R*C;
-            return L2 < _MN_ERR;
-        }
-        else {
-            for (size_t i = 0; i < R; i++) {
-                for (size_t j = 0; j < C; j++) {
-                    if( M[i][j]!=rhs(i,j) )
-                    {
-                        return false;
-                    }
-                }
-            }
-            return true;
-        }
+        return this->equality_integral(rhs);
     }
     bool operator!=(const matrix &rhs) const {
         return !(*this == rhs);
