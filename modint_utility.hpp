@@ -8,21 +8,20 @@ template<typename T>
 
 T gcd(T a, T b){
 
-    T c=a%b;
+    T c = a % b;
     
-    while(c!=0){
+    while(c != 0){
 
-        a=b;
-        b=c;
-        c=a%b;
+        a = b;
+        b = c;
+        c = a % b;
 
     }
 
     return b;
-
 }
 
-template<typename T>
+/*template<typename T>
 
 modint<T> modinv(modint<T> &a){
 
@@ -48,7 +47,15 @@ modint<T> modinv(modint<T> &a){
 
     return modint<T>(s0,a[1]);
 
+} */
+
+template <typename T>
+
+T modinv(modint<T> &a) {
+    T x = a[0], m = a[1];
+    return 1 < x ? m - modinv(*new modint<T>(m % x, x)) * m / x : 1;
 }
+
 
 template <typename T>
 

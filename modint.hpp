@@ -23,110 +23,110 @@ private:
 public: 
 
     //constructor with default case included
-    modint(T v=0,T m=_DEF_MOD_){
+    modint(T v = 0, T m = _DEF_MOD_) {
 
-        assert(m!=0);
+        assert(m != 0);
 
-        if(v>m){
+        if(v > m) {
 
-            v%=m;
-        }else if(v<0){
+            v %= m;
+        }else if(v < 0){
 
-            v=m-(abs(v)%m);
+            v = m - (abs(v) % m);
         }  
 
-        value=v;
-        modulus=m;
+        value = v;
+        modulus = m;
     }
 
     //constructor with initializer list
     modint(const std::initializer_list<T> lis) {
         
-        assert(lis.size()==2);
-        assert(*(++lis.begin())!=0);
+        assert(lis.size() == 2);
+        assert(*(++lis.begin()) != 0);
         
-        value=*(lis.begin());
-        modulus=*(++lis.begin());
+        value =* (lis.begin());
+        modulus =* (++lis.begin());
     }
 
-    void change_mod(T m){
+    void change_mod(T m) {
 
-        assert(m!=0);
+        assert(m != 0);
 
-        if(m>=modulus){
+        if(m >= modulus) {
 
-            modulus=m;
+            modulus = m;
 
-        }else{
+        }else {
 
-            value%=m;
-            modulus=m;
+            value %= m;
+            modulus = m;
         }
     }
 
     //Algebraic Operations
 
-    modint operator +=(const modint &b){
+    modint operator+= (const modint &b) {
 
-        assert(modulus==b.modulus);
+        assert(modulus == b.modulus);
 
-        value+=b.value;
+        value += b.value;
 
-        if(value>modulus){
+        if(value > modulus) {
 
-            value-=modulus;
+            value -= modulus;
         }
 
         return *this;
     }
 
-    modint operator -=(const modint &b){
+    modint operator-=(const modint &b) {
 
-        assert(modulus==b.modulus);
+        assert(modulus == b.modulus);
 
-        value-=b.value;
+        value -= b.value;
 
-        if(value<0){
+        if(value < 0) {
 
-            value+=modulus;
+            value += modulus;
         }
 
         return *this;
     }
 
-    modint operator *=(const modint &b){
+    modint operator*=(const modint &b) {
 
-        assert(modulus==b.modulus);
+        assert(modulus == b.modulus);
 
-        value*=b.value;
+        value *= b.value;
 
-        if(value>modulus){
+        if(value > modulus) {
 
-            value%=modulus;
+            value %= modulus;
         }
 
         return *this;
     }
 
-    modint operator *=(const T &b){
-
-        if(b>modulus){
-            b%=modulus;
+    modint operator*= (const T &k) {
+        T b = k;
+        if(b > modulus) {
+            b %= modulus;
         }
 
-        value*=b;
+        value *= b;
 
-        if(value>modulus){
+        if(value > modulus) {
 
-            value%=modulus;
+            value %= modulus;
         }
 
         return *this;
     }
 
-    modint operator *(const T &b){
+    modint operator*(const T &b) {
 
-        return modint(*this)*=b;
+        return modint(*this) *= b;
     }
 
     friend modint<T> operator*(const T &a, const modint<T> &b) {
@@ -136,71 +136,71 @@ public:
 
     modint operator-() const {
 
-        return modint()-*this;
+        return modint() - *this;
     }
 
     //Division is tricky; implemented in modint_utility.hpp
 
-    modint operator+ (const modint &b){
+    modint operator+ (const modint &b) {
 
-        return modint(*this)+=b;
+        return modint(*this) += b;
     }
-    modint operator- (const modint &b){
+    modint operator- (const modint &b) {
 
         return modint(*this)-=b;
     }
-    modint operator* (const modint &b){
+    modint operator* (const modint &b) {
 
-        return modint(*this)*=b;
+        return modint(*this) *= b;
     }
 
     //Boolean Operators
 
-    bool operator> (const modint &b){
+    bool operator> (const modint &b) {
 
-        assert(modulus==b.modulus);
+        assert(modulus == b.modulus);
 
-        return value>b.value;
+        return value > b.value;
     }
-    bool operator< (const modint &b){
+    bool operator< (const modint &b) {
 
-        assert(modulus==b.modulus);
+        assert(modulus == b.modulus);
 
-        return value<b.value;
+        return value < b.value;
     }
-    bool operator>= (const modint &b){
+    bool operator>= (const modint &b) {
 
-        assert(modulus==b.modulus);
+        assert(modulus == b.modulus);
 
-        return value>=b.value;
+        return value >= b.value;
     }
-    bool operator<= (const modint &b){
+    bool operator<= (const modint &b) {
 
-        assert(modulus==b.modulus);
+        assert(modulus == b.modulus);
 
-        return value<=b.value;
+        return value <= b.value;
     }
-    bool operator== (const modint &b){
+    bool operator== (const modint &b) {
 
-        return (value==b.value&&modulus==b.modulus);
+        return (value == b.value && modulus == b.modulus);
     }
-    bool operator!= (const modint &b){
+    bool operator!= (const modint &b) {
 
-        return !(*this==b);
+        return !(*this == b);
     }
 
     //Access data operators
 
     //Cannot return by reference as that would allow users to change values at whim
 
-    T operator[](size_t i){
+    T operator[](size_t i) {
 
-        assert(i==0||i==1);
+        assert(i == 0 || i == 1);
 
-        if(i==0){
+        if(i == 0) {
 
             return value;
-        }else{
+        }else {
 
             return modulus;
         }
@@ -221,17 +221,21 @@ public:
     //Direct Data Modifying Operators
     //Allowing users to change values
 
-    modint operator()(size_t i, T a){
+    modint operator()(size_t i, T a) {
 
-        assert(i==0||i==1);
+        assert(i == 0 || i == 1);
 
-        if(i==0){
+        if(i == 0) {
 
-            return *this=modint(a,modulus);
-        }else{
+            return *this = modint(a,modulus);
+        }else {
 
-            return *this=modint(value,a);
+            return *this = modint(value,a);
         }
+    }
+
+    std::pair<T, T> return_pair() {
+        return {value, modulus};
     }
 
     //Printing Operators
