@@ -1,12 +1,11 @@
 #ifndef _MATRIX_TESTS_H_
 #define _MATRIX_TESTS_H_
 #include <gtest/gtest.h>
-#include <iostream>
-#include "../../matrix.hpp"
-#include "../../matrix_utility.hpp"
+#include "../matrix.hpp"
+#include "../matrix_utility.hpp"
 
 template<typename T>
-class SampleTest 
+class SampleMatrixTest 
 {
 public:
 	int type;
@@ -14,7 +13,7 @@ public:
 	T B_val; size_t B_r; size_t B_c;
 	T fac;
 	bool res;
-	SampleTest(int t,T a,size_t ar,size_t ac,
+	SampleMatrixTest(int t,T a,size_t ar,size_t ac,
 		T b,size_t br,size_t bc) 
 	{
 		type= t;
@@ -25,13 +24,13 @@ public:
 	}
 };
 
-class IntTests : public testing::TestWithParam<SampleTest<long long int>>
+class IntMatrixTests : public testing::TestWithParam<SampleMatrixTest<long long int>>
 {
 public:
 	matrix<long long int> *A;
 	matrix<long long int> *B;
 	matrix<long long int> *C;
-	IntTests()
+	IntMatrixTests()
 	{
 		auto in= GetParam();
 		switch(in.type)
@@ -68,7 +67,7 @@ public:
 			}
 		}
 	}
-	~IntTests()
+	~IntMatrixTests()
 	{
 		delete A;
 		delete B;
@@ -76,7 +75,7 @@ public:
 	}
 };
 
-TEST_P(IntTests, IntMatirxTests)
+TEST_P(IntMatrixTests, IntTests)
 {
 	auto in= GetParam();
 	switch(in.type)
@@ -99,7 +98,7 @@ TEST_P(IntTests, IntMatirxTests)
 		}
 		case 3: {
 			EXPECT_TRUE((*C)==(*A)*(*B)) 
-				<< "Error with operator* for \nA=\n" << *A << "B=\n" << *B << "C=\n" << *C;;
+				<< "Error with operator* for \nA=\n" << *A << "B=\n" << *B << "C=\n" << *C;
 			(*A)*= (*B);
 			EXPECT_TRUE((*C)==(*A))
 				<< "Error with operator*= for \nA=\n" << *A << "B=\n" << *B << "C=\n" << *C;
@@ -120,22 +119,22 @@ TEST_P(IntTests, IntMatirxTests)
 			break;
 		}
 		case 5: {
-			EXPECT_EQ(in.res,(*B)==(*A));
-			//	<< "Error with operator== for \nA=\n" << *A << "B=\n" << *B << "res= " << "\n";
-			EXPECT_EQ(!(in.res),(*B)!=(*A));
-			//	<< "Error with operator!= for \nA=\n" << *A << "B=\n" << *B << "res= " << "\n";
+			EXPECT_EQ(in.res,(*B)==(*A))
+				<< "Error with operator== for \nA=\n" << *A << "B=\n" << *B << "res= " << "\n";
+			EXPECT_EQ(!(in.res),(*B)!=(*A))
+				<< "Error with operator!= for \nA=\n" << *A << "B=\n" << *B << "res= " << "\n";
 			break;
 		}
 	}
 }
 
-class FloatTests : public testing::TestWithParam<SampleTest<double>>
+class FloatMatrixTests : public testing::TestWithParam<SampleMatrixTest<double>>
 {
 public:
 	matrix<double> *A;
 	matrix<double> *B;
 	matrix<double> *C;
-	FloatTests()
+	FloatMatrixTests()
 	{
 		auto in= GetParam();
 		switch(in.type)
@@ -172,7 +171,7 @@ public:
 			}
 		}
 	}
-	~FloatTests()
+	~FloatMatrixTests()
 	{
 		delete A;
 		delete B;
@@ -180,7 +179,7 @@ public:
 	}
 };
 
-TEST_P(FloatTests, FloatMatirxTests)
+TEST_P(FloatMatrixTests, FloatTests)
 {
 	auto in= GetParam();
 	switch(in.type)
@@ -203,7 +202,7 @@ TEST_P(FloatTests, FloatMatirxTests)
 		}
 		case 3: {
 			EXPECT_TRUE((*C)==(*A)*(*B)) 
-				<< "Error with operator* for \nA=\n" << *A << "B=\n" << *B << "C=\n" << *C;;
+				<< "Error with operator* for \nA=\n" << *A << "B=\n" << *B << "C=\n" << *C;
 			(*A)*= (*B);
 			EXPECT_TRUE((*C)==(*A))
 				<< "Error with operator*= for \nA=\n" << *A << "B=\n" << *B << "C=\n" << *C;
@@ -224,8 +223,8 @@ TEST_P(FloatTests, FloatMatirxTests)
 		case 5: {
 			EXPECT_EQ(in.res,(*B)==(*A))
 				<< "Error with operator== for \nA=\n" << *A << "B=\n" << *B << "res= " << "\n";
-			EXPECT_EQ(!(in.res),(*B)!=(*A));
-			//	<< "Error with operator!= for \nA=\n" << *A << "B=\n" << *B << "res= " << "\n";
+			EXPECT_EQ(!(in.res),(*B)!=(*A))
+				<< "Error with operator!= for \nA=\n" << *A << "B=\n" << *B << "res= " << "\n";
 			break;
 		}
 	}

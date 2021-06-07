@@ -15,6 +15,8 @@ add_subdirectory(googletest)
 set(Headers
 	matrix.hpp
 	matrix_utility.hpp
+	polynomial.hpp
+	polynomial_utility.hpp
 )
 set(Sources
 	main.cpp
