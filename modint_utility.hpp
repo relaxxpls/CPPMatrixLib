@@ -91,7 +91,8 @@ modint<T> powmod(modint<T> a, T b) {
 }
 
 //calculatin n! in mod m
-int largestPower(int n, int p)
+template<typename T>
+T largestPower(T n, T p)
 {
     int x = 0;
  
@@ -102,8 +103,8 @@ int largestPower(int n, int p)
     }
     return x;
 }
-
-modint<int> factmod(int n, int m) {
+template<typename T>
+modint<T> factmod(T n, T m) {
     if (n > m) return 0;
     // Use Sieve of Eratosthenes to find all primes
     // smaller than n
@@ -115,12 +116,12 @@ modint<int> factmod(int n, int m) {
                 isPrime[j] = 0;
         }
     }
-    modint<int> res(1, m);
+    modint<T> res(1, m);
     for (int i = 2; i <= n; i++) {
         if (isPrime[i]) {
             // Find the largest power of prime 'i' that divides n!
-            int k = largestPower(n, i);
-            modint<int> p(i, m);
+            T k = largestPower(n, i);
+            modint<T> p(i, m);
             // Multiply result with (i^k) % p
             res *= powmod(p, k);
         }
@@ -129,31 +130,33 @@ modint<int> factmod(int n, int m) {
 }
 
 // Returns n! % p using Wilson's Theorem (assuming p is prime)
-modint<int> modFact(int n, int p) {
+template<typename T>
+modint<T> modFact(T n, T p) {
     // n! % p is 0 if n >= p
     if (p <= n)
         return 0;
  
     // Initialize result as (p-1)! which is -1 or (p-1)
-    modint<int> res(p - 1, p);
+    modint<T> res(p - 1, p);
  
     // Multiply modulo inverse of all numbers from (n+1)
     // to p
     for (int i = n + 1; i < p; i++){
-        modint<int> k(i, p);
+        modint<T> k(i, p);
 
-        res *= modinv<int> (k);
+        res *= modinv<T> (k);
     }
     return res;
 }
 
 //functuin to calculate nCr in mod m (m must be prime)
-modint<int> combination(int n, int r, int m) {
+template<typename T>
+modint<T> combination(T n, T r, T m) {
     if (n < r) return 0;
     else if (n == r) return 1;
     else {
-        modint<int> num = modFact(n, m), denom = modFact(n - r, m) * modFact(r, m); 
-        modint<int> res = num / denom; 
+        modint<T> num = modFact(n, m), denom = modFact(n - r, m) * modFact(r, m); 
+        modint<T> res = num / denom; 
         return res;
     }
 
