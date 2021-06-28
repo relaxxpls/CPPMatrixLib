@@ -1,7 +1,7 @@
 #ifndef _POLYNOMIAL_H_
 #define _POLYNOMIAL_H_
-#include "matrix.hpp"
-#include "matrix_utility.hpp"
+#include "../matrix/matrix.hpp"
+#include "../matrix/matrix_utility.hpp"
 
 template<typename T>
 class polynomial {

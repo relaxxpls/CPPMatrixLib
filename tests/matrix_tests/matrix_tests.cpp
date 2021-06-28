@@ -1,4 +1,4 @@
-#include "MatrixTests.hpp"
+#include "matrix_tests.hpp"
 
 TEST(MatrixTests, MatrixInitTests)
 {

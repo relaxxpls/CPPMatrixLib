@@ -1,5 +1,5 @@
-#include "matrix.hpp"
-#include "matrix_utility.hpp"
+#include "include/matrix/matrix.hpp"
+#include "include/matrix/matrix_utility.hpp"
 
 int main() {
     // Initialisation of a 3*3 matrix with base value 2

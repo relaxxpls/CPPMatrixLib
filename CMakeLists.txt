@@ -13,10 +13,10 @@ enable_testing()
 add_subdirectory(googletest)
 
 set(Headers
-	matrix.hpp
-	matrix_utility.hpp
-	polynomial.hpp
-	polynomial_utility.hpp
+	include/matrix/matrix.hpp
+	include/matrix/matrix_utility.hpp
+	include/polynomial/polynomial.hpp
+	include/polynomial/polynomial_utility.hpp
 )
 set(Sources
 	main.cpp
@@ -24,4 +24,4 @@ set(Sources
 
 add_library(${This} STATIC ${Sources} ${Headers})
 
-add_subdirectory(Tests)
+add_subdirectory(tests)

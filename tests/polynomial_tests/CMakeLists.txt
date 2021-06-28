@@ -1,15 +1,13 @@
 cmake_minimum_required(VERSION 3.16.3)
 
-set(This ExecuteTests)
+set(This polynomial_tests)
 
 set(Headers
-	MatrixTests.hpp
-	PolyTests.hpp
+	polynomial_tests.hpp
 )
 
 set(Sources
-	MatrixTests.cpp
-	PolyTests.cpp
+	polynomial_tests.cpp
 )
 
 add_executable(${This} ${Sources})

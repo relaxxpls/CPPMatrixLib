@@ -1,8 +1,8 @@
 #ifndef _POLYTESTS_H_
 #define _POLYTESTS_H_
 #include <gtest/gtest.h>
-#include "../polynomial.hpp"
-#include "../polynomial_utility.hpp"
+#include "../../include/polynomial/polynomial.hpp"
+#include "../../include/polynomial/polynomial_utility.hpp"
 
 template<typename T>
 class SamplePolyTest 

@@ -1,8 +1,8 @@
 #ifndef _MATRIX_TESTS_H_
 #define _MATRIX_TESTS_H_
 #include <gtest/gtest.h>
-#include "../matrix.hpp"
-#include "../matrix_utility.hpp"
+#include "../../include/matrix/matrix.hpp"
+#include "../../include/matrix/matrix_utility.hpp"
 
 template<typename T>
 class SampleMatrixTest 
