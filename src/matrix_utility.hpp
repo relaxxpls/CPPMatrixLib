@@ -24,6 +24,7 @@
 #define _MATRIX_UTILITY_H_
 #include "matrix.hpp"
 #include <tuple>
+#include <chrono>
 
 
 // Zero/null matrix of size r*c
@@ -56,7 +57,7 @@ matrix<T> pow(matrix<T> m, int k) {
     if (k == 0) {
         return eye<T>(R);
     }
-    matrix<T> res = m;
+    matrix<T> res = eye<T>(R);
     for (int i = k; i > 0; i>>=1) {
         res = (i&1) ? res*m : res;
         m *= m;
@@ -242,6 +243,16 @@ std::tuple<matrix<T>, matrix<T>> qr(matrix<T> A) {
         }
     }
     return std::make_tuple(Q, R);
+}
+
+//random matrix
+template<typename T>
+matrix<T> random_matrix(size_t r, size_t c, std::pair< int , int> a = {0, RAND_MAX}, unsigned seed = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count()) {
+        srand(seed);
+        matrix<T> X(r,c);
+        for (int i = 0; i < r; i++) 
+            for (int j = 0; j < c; j++) X(i , j) = rand() % a.second  + a.first;
+        return X;
 }
 
 #endif
