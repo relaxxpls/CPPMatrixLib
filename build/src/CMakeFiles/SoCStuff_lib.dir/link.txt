@@ -1,0 +1,2 @@
+/usr/bin/ar qc libSoCStuff_lib.a  CMakeFiles/SoCStuff_lib.dir/main.cpp.o
+/usr/bin/ranlib libSoCStuff_lib.a
