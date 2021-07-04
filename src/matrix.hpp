@@ -30,6 +30,7 @@
 #include <iterator>
 #include <cmath>
 #include <climits>
+#include <type_traits>
 
 #define _MN_ERR 1e-12
 
@@ -136,10 +137,7 @@ public:
     }
 
     // L2 norm of A-B (ie ||A-B||^2) must be lesser than _MN_ERR (=1e-12)
-    bool operator==(const matrix &rhs) const {
-        if (empty() || R != rhs.R || C != rhs.C) {
-            return false;
-        }
+    bool equality_floating_point(const matrix &rhs) const {
         double L2 = 0;
         for (size_t i = 0; i < R; i++) {
             for (size_t j = 0; j < C; j++) {
@@ -148,6 +146,25 @@ public:
         }
         L2 /= R*C;
         return L2 < _MN_ERR;
+    }
+    bool equality_integral(const matrix &rhs) const {
+        for (size_t i = 0; i < R; i++) {
+            for (size_t j = 0; j < C; j++) {
+                if( M[i][j]!=rhs(i,j) ) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    bool operator==(const matrix &rhs) const {
+        if (empty() || rhs.empty() || R != rhs.R || C != rhs.C) {
+            return false;
+        }
+        if(std::is_floating_point<T>::value) {
+            return this->equality_floating_point(rhs);
+        }
+        return this->equality_integral(rhs);
     }
     bool operator!=(const matrix &rhs) const {
         return !(*this == rhs);
