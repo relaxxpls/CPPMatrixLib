@@ -2,7 +2,7 @@
 #include "primes_lib.h"
 
 TEST(primetest, test1) {
-    long long int x = 5191492879;
+    long long int x = 97;
     EXPECT_EQ(is_prime(x), true);
 }
 
