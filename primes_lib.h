@@ -4,15 +4,14 @@
 #include <iostream>
 using namespace std;
 using u64 = uint64_t;
-using u128 = __uint128_t;
 
 u64 binpower(u64 base, u64 e, u64 mod) {
     u64 result = 1;
     base %= mod;
     while (e) {
         if (e & 1)
-            result = (u128)result * base % mod;
-        base = (u128)base * base % mod;
+            result = (u64)result * base % mod;
+        base = (u64)base * base % mod;
         e >>= 1;
     }
     return result;
@@ -23,7 +22,7 @@ bool check_composite(u64 n, u64 a, u64 d, int s) {
     if (x == 1 || x == n - 1)
         return false;
     for (int r = 1; r < s; r++) {
-        x = (u128)x * x % n;
+        x = (u64)x * x % n;
         if (x == n - 1)
             return false;
     }
