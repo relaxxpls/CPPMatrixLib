@@ -65,7 +65,7 @@ int main() {
         std::cout << "QR Decomposition Failed :(" << std::endl;
     }
 
-    matrix<double> rM = random_matrix<double> (3,3, {0,20});
+    matrix<int> rM = random_matrix<int> (3,3, {0,1000000000});
     std::cout << rM;
     return 0;
 }
