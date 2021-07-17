@@ -67,5 +67,23 @@ int main() {
 
     matrix<int> rM = random_matrix<int> (3,3, {0,1000000000});
     std::cout << rM;
+
+    matrix<double> E=random_matrix<double>(4,4,{0,100000000},0);
+    
+    std::tuple<matrix<double>,matrix<double>> lu_tuple=lu(E);
+
+    matrix<double> l=std::get<0>(lu_tuple);
+    matrix<double> u=std::get<1>(lu_tuple);
+
+    std::cout<<"Matrix: \n"<<E<<"\n";
+
+    std::cout<<"Lower: \n"<<l<<"\n";
+    std::cout<<"Upper: \n"<<u<<"\n";
+
+    if(l*u==E){
+
+        std::cout<<"LU Decomposition Works!"<<"\n";
+    }
+    
     return 0;
 }
