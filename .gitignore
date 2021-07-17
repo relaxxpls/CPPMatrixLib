@@ -1,3 +1,4 @@
-a.out
-*.gch
 .vscode/
+*.gch
+*.hpp.gch
+*.exe
