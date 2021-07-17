@@ -22,6 +22,6 @@ int main(){
 
     cout << factmod(27, 29) << endl;
 
-     cout << combination(23, 4, 97) << endl;
+    cout << combination(23, 4, 97) << endl;
     
 }
