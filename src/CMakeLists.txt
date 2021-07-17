@@ -1,8 +1,10 @@
 set(BINARY ${CMAKE_PROJECT_NAME})
 
-file(GLOB_RECURSE SOURCES LIST_DIRECTORIES true *.h *.cpp)
-
-set(SOURCES ${SOURCES})
+set(SOURCES 
+    modint.hpp
+    modint_utility.hpp
+    main.cpp
+)
 
 add_executable(${BINARY}_run ${SOURCES})
 

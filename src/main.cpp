@@ -1,26 +1,12 @@
 #include "matrix.hpp"
 #include "matrix_utility.hpp"
 
-int main() {
-    // Initialisation of a 3*3 matrix with base value 2
-    matrix<int> B(3, 3, 2);
+using namespace std;
 
-    // Exponentiation
-    matrix<int> M = pow(B, 3);
+int main(){
 
-    // edit single element
-    M(1, 0) = 1;
-
-    // M.t() = transpose of M (ie M')
-    matrix<int> X = -2*M.t();
-    // Print matrix
-    std::cout << "matrix X: \n" << X << std::endl;
-
-    // Span X(1:2, 0:2)
-    // Implementation 1:
-    matrix<int> y1 = X({1, 2}, {0, 2});
-    std::cout << "matrix y1: \n" << y1 << std::endl;
-
+    
+    
     // Implementation 2:
     matrix<int> y2 = X(span(0, 1), span(2, 2));
     std::cout << "matrix y2: \n" << y2 << std::endl;

@@ -75,15 +75,15 @@ public:
 
     //Algebraic Operations
 
-    modint operator +=(const modint &b){
+    modint operator+= (const modint &b) {
 
-        assert(modulus==b.modulus);
+        assert(modulus == b.modulus);
 
-        value+=b.value;
+        value += b.value;
 
-        if(value>=modulus){
+        if(value >= modulus) {
 
-            value-=modulus;
+            value -= modulus;
         }
 
         return *this;
@@ -108,22 +108,6 @@ public:
         assert(modulus==b.modulus);
 
         value*=b.value;
-
-        if(value>=modulus){
-
-            value%=modulus;
-        }
-
-        return *this;
-    }
-
-    modint operator *=(const T &b){
-
-        if(b>modulus){
-            b%=modulus;
-        }
-
-        value*=b;
 
         if(value>=modulus){
 
@@ -230,17 +214,21 @@ public:
     //Direct Data Modifying Operators
     //Allowing users to change values
 
-    modint operator()(size_t i, T a){
+    modint operator()(size_t i, T a) {
 
-        assert(i==0||i==1);
+        assert(i == 0 || i == 1);
 
-        if(i==0){
+        if(i == 0) {
 
-            return *this=modint(a,modulus);
-        }else{
+            return *this = modint(a,modulus);
+        }else {
 
-            return *this=modint(value,a);
+            return *this = modint(value,a);
         }
+    }
+
+    std::pair<T, T> return_pair() {
+        return {value, modulus};
     }
 
     //Printing Operators
