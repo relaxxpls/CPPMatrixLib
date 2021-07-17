@@ -144,3 +144,33 @@ TEST(MATRIX_UTILITY, Power){
     }
 }
 
+TEST(MATRIX_UTILITY, LU){
+
+    for(int i=0;i<100;i++){
+
+        matrix<double> A=random_matrix<double>(100,100,{0,10000000},i);
+
+        std::tuple<matrix<double>,matrix<double>> lu_tuple=lu(A);
+
+        matrix<double> B=std::get<0>(lu_tuple);
+        matrix<double> C=std::get<1>(lu_tuple);
+
+        ASSERT_EQ(B*C,A);
+
+        for(int j=0;j<100;j++){
+
+            for(int k=0;k<j;k++){
+
+                ASSERT_EQ(C(j,k),0);
+            }
+
+            ASSERT_EQ(B(j,j),1);
+
+            for(int k=j+1;k<100;k++){
+
+                ASSERT_EQ(B(j,k),0);
+            }
+        }
+    }
+}
+
