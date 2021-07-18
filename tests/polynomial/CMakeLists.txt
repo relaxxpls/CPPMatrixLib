@@ -1,19 +1,19 @@
 cmake_minimum_required(VERSION 3.16.3)
 
-set(This polynomial_tests)
+set(This polynomial)
 
 set(Headers
-	polynomial_tests.hpp
+	test1.hpp
 )
 
 set(Sources
-	polynomial_tests.cpp
+	test1.cpp
 )
 
 add_executable(${This} ${Sources})
 target_link_libraries(${This} PUBLIC
 	gtest_main
-	src
+	CPPMatrixLib
 )	
 	
 add_test(

@@ -2,23 +2,23 @@ cmake_minimum_required(VERSION 3.16.3)
 
 set(This tests)
 
-add_subdirectory(matrix_tests)
-add_subdirectory(polynomial_tests)
+add_subdirectory(matrix)
+add_subdirectory(polynomial)
 
 set(Headers
-	matrix_tests/matrix_tests.hpp
-	polynomial_tests/polynomial_tests.hpp
+	matrix/test1.hpp
+	polynomial/test1.hpp
 )
 
 set(Sources
-	matrix_tests/matrix_tests.cpp
-	polynomial_tests/polynomial_tests.cpp
+	matrix/test1.cpp
+	polynomial/test1.cpp
 )
 
 add_executable(${This} ${Sources})
 target_link_libraries(${This} PUBLIC
 	gtest_main
-	src
+	CPPMatrixLib
 )	
 	
 add_test(

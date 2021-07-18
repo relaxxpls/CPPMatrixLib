@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16.3)
 
-set(This src)
+set(This CPPMatrixLib)
 
 project(${This} C CXX)
 
@@ -10,8 +10,6 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 enable_testing()
 
-add_subdirectory(googletest)
-
 set(Headers
 	include/matrix/matrix.hpp
 	include/matrix/matrix_utility.hpp
@@ -19,9 +17,10 @@ set(Headers
 	include/polynomial/polynomial_utility.hpp
 )
 set(Sources
-	main.cpp
+	include/matrix/matrix_main.cpp
 )
 
 add_library(${This} STATIC ${Sources} ${Headers})
 
 add_subdirectory(tests)
+add_subdirectory(lib/googletest)

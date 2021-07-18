@@ -1,19 +1,19 @@
 cmake_minimum_required(VERSION 3.16.3)
 
-set(This matrix_tests)
+set(This matrix)
 
 set(Headers
-	matrix_tests.hpp
+	test1.hpp
 )
 
 set(Sources
-	matrix_tests.cpp
+	test1.cpp
 )
 
 add_executable(${This} ${Sources})
 target_link_libraries(${This} PUBLIC
 	gtest_main
-	src
+	CPPMatrixLib
 )	
 	
 add_test(

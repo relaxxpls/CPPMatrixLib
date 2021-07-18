@@ -1,4 +1,4 @@
-#include "polynomial_tests.hpp"
+#include "test1.hpp"
 
 TEST(PolyTests, PolyInitTests)
 {
