@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/Modint_run.dir/main.cpp.o  -o Modint_run 

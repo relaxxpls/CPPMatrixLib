@@ -1,0 +1,2 @@
+/usr/bin/ar qc libModint_lib.a  CMakeFiles/Modint_lib.dir/main.cpp.o
+/usr/bin/ranlib libModint_lib.a
