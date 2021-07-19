@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/matrix/matrix.hpp
+vector
+-
+utility
+-
+iostream
+-
+algorithm
+-
+cassert
+-
+iterator
+-
+cmath
+-
+climits
+-
+typeinfo
+-
+
+../include/matrix/matrix_utility.hpp
+matrix.hpp
+../include/matrix/matrix.hpp
+tuple
+-
+chrono
+-
+
+/home/ashish/Desktop/CPPMatrixLib/src/main.cpp
+matrix.hpp
+/home/ashish/Desktop/CPPMatrixLib/src/matrix.hpp
+matrix_utility.hpp
+/home/ashish/Desktop/CPPMatrixLib/src/matrix_utility.hpp
+

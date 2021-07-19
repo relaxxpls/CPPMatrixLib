@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/modint/modint.hpp
+vector
+-
+utility
+-
+iostream
+-
+algorithm
+-
+cassert
+-
+iterator
+-
+cmath
+-
+climits
+-
+
+../include/modint/modint_utility.hpp
+modint.hpp
+../include/modint/modint.hpp
+algorithm
+-
+cstring
+-
+
+/home/ashish/Desktop/CPPMatrixLib/src/main_modint.cpp
+modint.hpp
+/home/ashish/Desktop/CPPMatrixLib/src/modint.hpp
+modint_utility.hpp
+/home/ashish/Desktop/CPPMatrixLib/src/modint_utility.hpp
+

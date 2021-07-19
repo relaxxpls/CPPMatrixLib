@@ -1,10 +1,17 @@
 cmake_minimum_required(VERSION 3.10)
-project(SoCStuff)
+set(This Matrix)
 
-set(CMAKE_CXX_STANDARD 14)
+project(${This} C CXX)
 
-include_directories(src)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_C_STANDARD 99)
+
+enable_testing()
+
+include_directories(include/matrix)
+include_directories(include/modint)
+include_directories(include/polynomial)
 
 add_subdirectory(src)
-add_subdirectory(tst)
-add_subdirectory(lib/googletest)
+add_subdirectory(test)
+add_subdirectory(extern/googletest)
