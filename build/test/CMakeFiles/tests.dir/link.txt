@@ -1,0 +1,1 @@
+/usr/bin/c++  -g     -o tests ../lib/libgtest_maind.a -lCPPMatrixLib_lib ../lib/libgtestd.a -lpthread 
