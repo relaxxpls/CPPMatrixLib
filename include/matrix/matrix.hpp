@@ -30,7 +30,7 @@
 #include <iterator>
 #include <cmath>
 #include <climits>
-#include <type_traits>
+#include <typeinfo>
 
 #define _MN_ERR 1e-12
 
@@ -47,14 +47,68 @@ class matrix {
 public:
     // constructor with memory allocation
     matrix(size_t r, size_t c, T x=0) : R(r), C(c) {
-        M.assign(R, std::vector<T>(C, x));
+        
+        M.resize(R*C, x);
     }
 
     // default constructor
     matrix() : R(0), C(0) {}
     // constructor from initializer_list
-    matrix(const std::initializer_list<std::vector<T>> m) : M(m) {
-        R = M.size(), C = R > 0 ? M[0].size() : 0;
+    /*matrix(const std::initializer_list<std::vector<T>> m) {
+        R = m.size(), C = R > 0 ? m.begin()->size() : 0;
+
+        M.resize(R*C, 0);
+
+        size_t r=0;
+
+        for(auto i=m.begin();i!=m.end();i++){
+
+            for(size_t j=0;j<i->size();j++){
+
+                M[r*C+j]=(*i)[j];
+            }
+            r++;
+        }
+    }*/
+
+    matrix(const std::initializer_list<std::vector<T>> m) {    
+        
+        auto it=m.end();
+        
+        if((--it)->size()==0){
+
+            C = m.size()-1, R = C > 0 ? m.begin()->size() : 0;
+
+            M.resize(R*C, 0);
+
+            size_t c=0;
+
+            for(auto i=m.begin();i!=m.end()-1;i++){
+
+                for(size_t j=0;j<i->size();j++){
+                
+                    (*this)(j,c)=(*i)[j];   
+                }
+                c++;
+            }
+
+        }else{
+
+            R = m.size(), C = R > 0 ? m.begin()->size() : 0;
+
+            M.resize(R*C, 0);
+
+            size_t r=0;
+
+            for(auto i=m.begin();i!=m.end();i++){
+
+                for(size_t j=0;j<i->size();j++){
+
+                    (*this)(r,j)=(*i)[j];
+                }
+                r++;
+            }
+        }
     }
 
     //  access size (rows, columns)
@@ -66,18 +120,23 @@ public:
         return std::make_pair(R, C);
     }
     void resize(size_t r, size_t c, T x=0) {
+        
         R = r, C = c;
-        M.assign(R, std::vector<T>(C, x));
+        M.resize(R*C, 0);
     }
 
     // Algebric Operations:
     // 1 matrix(A), 1 Scalar(b): A+I*b, A-I*b, A*b
     // 2 Matrices(A, B): A+B, A-B, A*B
     matrix operator+=(const matrix &rhs) {
+
         assert(R == rhs.R && C == rhs.C);
+
         for (size_t r = 0; r < R; r++) {
+
             for (size_t c = 0; c < C; c++) {
-                M[r][c] += rhs(r, c);
+
+                (*this)(r,c) += rhs(r, c);
             }
         }
         return *this;
@@ -86,17 +145,22 @@ public:
         assert(R == rhs.R && C == rhs.C);
         for (size_t r = 0; r < R; r++) {
             for (size_t c = 0; c < C; c++) {
-                M[r][c] -= rhs(r, c);
+                (*this)(r,c) -= rhs(r, c);
             }
         }
         return *this;
     }
     matrix operator*=(const matrix &rhs) {
-        
-        *this=(*this)*rhs;
-
-        return *this;
-
+        assert(C == rhs.R);
+        matrix res(R, rhs.C, 0);
+        for (size_t r = 0; r < res.R; r++) {
+            for (size_t c = 0; c<res.C; c++) {
+                for (size_t i = 0; i < C; i++) {
+                    res(r, c) += (*this)(r,i) * rhs(i, c);
+                }
+            }
+        }
+        return res;
     }
     matrix operator+(const matrix &rhs) const {
         return matrix(*this) += rhs;
@@ -105,22 +169,12 @@ public:
         return matrix(*this) -= rhs;
     }
     matrix operator*(const matrix &rhs) const {
-        
-        assert(C == rhs.R);
-        matrix res(R, rhs.C, 0);
-        for (size_t r = 0; r < res.R; r++) {
-            for (size_t c = 0; c<res.C; c++) {
-                for (size_t i = 0; i < C; i++) {
-                    res(r, c) += M[r][i] * rhs(i, c);
-                }
-            }
-        }
-        return res;
+        return matrix(*this) *= rhs;
     }
     matrix operator*=(const T &rhs) {
         for (size_t r = 0; r < R; r++) {
             for (size_t c = 0; c < C; c++) {
-                M[r][c] *= rhs;
+                (*this)(r,c) *= rhs;
             }
         }
         return *this;
@@ -137,34 +191,18 @@ public:
     }
 
     // L2 norm of A-B (ie ||A-B||^2) must be lesser than _MN_ERR (=1e-12)
-    bool equality_floating_point(const matrix &rhs) const {
+    bool operator==(const matrix &rhs) const {
+        if (empty() || R != rhs.R || C != rhs.C) {
+            return false;
+        }
         double L2 = 0;
         for (size_t i = 0; i < R; i++) {
             for (size_t j = 0; j < C; j++) {
-                L2 += (M[i][j] - rhs(i, j)) * (M[i][j] - rhs(i, j));
+                L2 += ((*this)(i,j) - rhs(i, j)) * ((*this)(i,j) - rhs(i, j));
             }
         }
         L2 /= R*C;
         return L2 < _MN_ERR;
-    }
-    bool equality_integral(const matrix &rhs) const {
-        for (size_t i = 0; i < R; i++) {
-            for (size_t j = 0; j < C; j++) {
-                if( M[i][j]!=rhs(i,j) ) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-    bool operator==(const matrix &rhs) const {
-        if (empty() || rhs.empty() || R != rhs.R || C != rhs.C) {
-            return false;
-        }
-        if(std::is_floating_point<T>::value) {
-            return this->equality_floating_point(rhs);
-        }
-        return this->equality_integral(rhs);
     }
     bool operator!=(const matrix &rhs) const {
         return !(*this == rhs);
@@ -179,22 +217,25 @@ public:
 
     // access data operators
     T& operator[](size_t i) {
-        return M[i % R][i / R];
+        return (*this)((i % R),(i / R));
     }
+
     T& operator()(size_t r, size_t c) {
         assert(0 <= r && r < R && 0 <= c && c < C);
-        return M[r][c];
+        return M[r*C+c];
     }
+    
     T operator()(size_t r, size_t c) const {
         assert(0 <= r && r < R && 0 <= c && c < C);
-        return M[r][c];
+        return M[r*C+c];
     }
+    
     matrix operator()(const span &row_range, const span &col_range) const {
         assert(row_range.r < R && col_range.r < C);
         matrix<T> res(row_range.len, col_range.len, 0);
         for (size_t r = 0; r < row_range.len; r++) {
             for (size_t c = 0; c < col_range.len; c++)
-                res(r, c) = M[row_range.l + r][col_range.l + c];
+                res(r, c) = (*this)((row_range.l + r),(col_range.l + c));
         }
         return res;
     }
@@ -204,7 +245,7 @@ public:
         matrix res(C, R);
         for (size_t r = 0; r < R; r++) {
             for (size_t c = 0; c < C; c++) {
-                res(c, r) += M[r][c];
+                res(c, r) += (*this)(r,c);
             }
         }
         return res;
@@ -218,7 +259,7 @@ public:
         }
         for (int r = d; r < R; r++) {
             for (int c = d; c < C; c++) {
-                res(r, c) = M[r][c];
+                res(r, c) = (*this)(r,c);
             }
         }
         return res;
@@ -228,14 +269,18 @@ public:
     matrix column(int c) const {
         matrix<T> res(R, 1);
         for (size_t r = 0; r < R; r++) {
-            res(r, 0) = M[r][c];
+            res(r, 0) = (*this)(r,c);
         }
         return res;
     }
 
     // return r-th row of m
     matrix row(int r) const {
-        return {M[r]};
+        matrix<T> res(1, C);
+        for (size_t c = 0; c < C; c++) {
+            res(0, c) = (*this)(r,c);
+        }
+        return res;
     }
 
     // display our matrix
@@ -258,7 +303,7 @@ public:
 
 private:
     size_t R, C;
-    std::vector<std::vector<T>> M;
+    std::vector<T>M;
 
 };
 

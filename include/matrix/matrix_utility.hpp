@@ -255,4 +255,87 @@ matrix<T> random_matrix(size_t r, size_t c, std::pair< int , int> a = {0, RAND_M
         return X;
 }
 
+template <typename T>
+void gauss_elim(matrix<T> &A) {
+    const int s_r = A.size().first, s_c = A.size().second;
+    matrix<T> zero_c(s_r, 1, 0);
+    for (int r = 0; r < s_r - 1; r++) {
+        zero_c.resize(s_r - r, 1, 0);
+        for (int i = r; i < s_c; i++) {
+            //std::cout << A(span(r, s_r - 1), span(i, i)) << "\n\n"; 
+            if (A(span(r, s_r - 1), span(i, i)) == zero_c) continue;
+            for (int j = r; j < s_r; j++) {
+                if (A(j, i) == 0) continue;
+                else {
+                    for (int k = 0; k < s_c; k++) {
+                        T temp = A(j, k);
+                        A(j, k) = A(r, k);
+                        A(r, k) = temp;
+                    }
+                    //std::cout << A ;
+                    break;
+                }
+            }
+            for (int j = r + 1; j < s_r; j++) {
+                if (A(r, i) == 0) break;
+                if (A(j, i) == 0) continue;
+                double q = A(j, i) / A(r, i);
+                for (int k = 0; k < s_c; k++) 
+                    A(j, k) -= T(q * A(r, k)); 
+                //std::cout << A;
+            }
+            break;
+        }
+    }
+    //cleaning the matrix
+    for (int i = 0; i < s_r * s_c; i++)
+        if (fabs(A[i]) < 1e-5) A[i] = 0;
+}
+
+//LU Decomposition
+template<typename T>
+std::tuple<matrix<T>, matrix<T>> lu(matrix<T> A) {
+    size_t R = A.size().first, C = A.size().second;
+    assert(R == C);
+
+    for (size_t i = 0; i < R; i++) {
+        if (A(i, i) == 0) {
+            std::cerr << ("LU decomposition has failed");
+            return std::make_tuple(zeros<T>(0, 0), zeros<T>(0, 0));
+        }
+        for (size_t j = i+1; j < R; j++) {
+            
+            //Loop was added
+            for(size_t k=0;k<i;k++){
+
+                A(j, i)-=(A(j,k)*A(k,i));
+            }
+
+             //Loop was added
+            for(size_t k=0;k<i;k++){
+
+                A(i, j)-=(A(i,k)*A(k,j));
+            }
+
+            A(j, i) /= A(i, i);
+        }
+        for (size_t j = i+1; j < R; j++) {
+            A(j,j) -= A(j,i) * A(i,j);
+        }
+    }
+
+    matrix<T> L = eye<T>(R), U = zeros<T>(R);
+    for (size_t r = 0; r < R; r++) {
+        for (size_t c = r; c < R; c++) {
+            U(r, c) = A(r, c);
+        }
+    }
+    for (size_t r = 0; r < R; r++) {
+        for (size_t c = 0; c < r; c++) {
+            L(r, c) = A(r, c);
+        }
+    }
+    return std::make_tuple(L, U);
+}
+
 #endif
