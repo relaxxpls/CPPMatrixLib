@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Install script for directory: /home/aaryan/SoCStuff/src
+=======
+# Install script for directory: /home/ashish/Desktop/CPPMatrixLib/src
+>>>>>>> develop
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
